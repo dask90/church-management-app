@@ -24,7 +24,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen bg-gray-50">
         <div className="text-lg text-gray-600">Loading...</div>
       </div>
     );
@@ -37,11 +37,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const mainContentMargin = isMobileOpen
     ? "ml-0"
     : isExpanded || isHovered
-    ? "lg:ml-[260px]"
+    ? "lg:ml-[230px]"
     : "lg:ml-[90px]";
 
   return (
-    <div className="min-h-screen xl:flex bg-gray-100">
+    <div className="min-h-screen bg-gray-100 xl:flex">
       {/* Sidebar and Backdrop */}
       <Sidebar />
       {isMobileOpen && <Backdrop />}

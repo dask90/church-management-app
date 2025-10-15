@@ -27,9 +27,9 @@ export default function UserDropdown() {
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className="flex items-center gap-2 rounded-full bg-gray-200 p-2 text-black font-semibold"
+        className="flex items-center gap-2 p-2 font-semibold text-black bg-gray-200 rounded-full"
       >
-        <div className="flex h-9 w-9 items-center justify-center  text-white font-semibold">
+        <div className="flex items-center justify-center font-semibold text-white h-9 w-9">
           {user?.name?.charAt(0).toUpperCase() || "U"}
         </div>
         <span className="hidden md:block">{user?.name || "User"}</span>
@@ -62,18 +62,18 @@ export default function UserDropdown() {
           <span className="block font-medium text-gray-700 dark:text-gray-400">
             {user?.name || "User"}
           </span>
-          <span className="block text-gray-500 text-sm">
+          <span className="block text-sm text-gray-500">
             {user?.email || "user@example.com"}
           </span>
         </div>
 
-        <ul className="flex flex-col gap-1 border-b border-gray-200 pt-4 pb-3 dark:border-gray-800">
+        <ul className="flex flex-col gap-1 pt-4 pb-3 border-b border-gray-200 dark:border-gray-800">
           <li>
             <DropdownItem
               onItemClick={closeDropdown}
               tag="a"
               href="/profile"
-              className="group flex items-center gap-3 rounded-lg px-3 py-2 text-gray-700 hover:bg-green-800 hover:text-white dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300 font-medium"
+              className="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group hover:bg-slate-900 hover:text-amber-300"
             >
               Account settings
             </DropdownItem>
@@ -82,7 +82,7 @@ export default function UserDropdown() {
 
         <button
           onClick={handleLogout}
-          className="mt-2 w-full rounded-lg bg-red-100 px-3 py-2 text-red-600 hover:bg-red-200 transition font-medium"
+          className="w-full px-3 py-2 mt-2 font-medium text-red-600 transition bg-red-100 rounded-lg hover:bg-red-300"
         >
           Sign out
         </button>

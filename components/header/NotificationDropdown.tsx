@@ -33,12 +33,12 @@ export default function NotificationDropdown({
   return (
     <div className="relative">
       <button
-        className="dropdown-toggle relative flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-400"
+        className="relative flex items-center justify-center text-gray-500 bg-white border rounded-full dropdown-toggle h-11 w-11 border-slate-900 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-400"
         onClick={toggleDropdown}
       >
         {notifying && (
           <span className="absolute top-0.5 right-0 z-10 h-2 w-2 rounded-full bg-orange-400">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"></span>
+            <span className="absolute inline-flex w-full h-full bg-orange-400 rounded-full opacity-75 animate-ping"></span>
           </span>
         )}
         <svg
@@ -57,7 +57,7 @@ export default function NotificationDropdown({
         onClose={closeDropdown}
         className="absolute -right-[240px] mt-2 w-[350px] flex-col rounded-xl bg-white p-3 shadow-lg dark:bg-gray-800"
       >
-        <div className="mb-3 flex items-center justify-between border-b border-gray-200 pb-3 dark:border-gray-700">
+        <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-200 dark:border-gray-700">
           <h5 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
             Recent Activity
           </h5>
@@ -71,7 +71,7 @@ export default function NotificationDropdown({
 
         <ul className="flex flex-col gap-3 max-h-[400px] overflow-y-auto">
           {activities.length === 0 && (
-            <p className="text-gray-500 text-center py-4">No recent activity</p>
+            <p className="py-4 text-center text-gray-500">No recent activity</p>
           )}
           {activities.map((activity, i) => (
             <DropdownItem

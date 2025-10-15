@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@/contexts/AuthContext";
+// import { useAuth } from "@/contexts/AuthContext";
 import { useSidebar } from "@/contexts/SidebarContext";
 import NotificationDropdown from "@/components/header/NotificationDropdown";
 import UserDropdown from "@/components/header/UserDropdown";
@@ -23,11 +23,11 @@ const pageTitles: { [key: string]: string } = {
 };
 
 export default function Topbar() {
-  const { user, logout } = useAuth();
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
   const pathname = usePathname();
   const inputRef = useRef<HTMLInputElement>(null);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
 
   const getPageTitle = () => {
     if (pageTitles[pathname]) return pageTitles[pathname];
@@ -47,7 +47,9 @@ export default function Topbar() {
     }
   };
 
-  const handleLogout = () => logout();
+  const toggleApplicationMenu = () => {
+    setApplicationMenuOpen(!isApplicationMenuOpen);
+  };
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -62,82 +64,95 @@ export default function Topbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 h-70 w-full border-b border-gray-200 bg-white ">
-      <div className="flex w-full items-center justify-between px-4 py-3 lg:px-6 lg:py-4">
-        {/* Left Section: Sidebar toggle + Logo */}
-        <div className="flex mr-3 items-center gap-2">
+    <header className="sticky top-0 w-full bg-white border-b border-slate-900 h-70">
+      <div className="flex flex-col items-center justify-between w-full lg:flex-row">
+        {/* Top Section */}
+        <div className="flex items-center justify-between w-full px-4 py-3 lg:px-6 lg:py-4">
+          {/* Left Section: Sidebar toggle + Logo */}
+          <div className="flex items-center gap-2 mr-3">
+            <button
+              onClick={handleToggleSidebar}
+              aria-label="Toggle Sidebar"
+              className="flex items-center justify-center w-10 h-10 border rounded-lg border-slate-900 hover:bg-gray-400 lg:w-11 lg:h-11"
+            >
+              <Image
+                src="/icons/manual.svg"
+                alt="Toggle Sidebar"
+                width={24}
+                height={24}
+                className="h-7 w-7"
+              />
+            </button>
+
+            <Link href="/" className="lg:hidden">
+              <Image
+                width={154}
+                height={32}
+                className="dark:hidden"
+                src="/images/logo/icgc.jpg"
+                alt="Logo"
+              />
+              <Image
+                width={154}
+                height={32}
+                className="hidden dark:block"
+                src="/images/logo/icgc.jpg"
+                alt="Logo"
+              />
+            </Link>
+          </div>
+
+          {/* Middle Section: Search (desktop only) */}
+          <div className="relative hidden lg:block w-80">
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Search or type command..."
+              className="h-11 w-full rounded-lg border  border-slate-900 bg-transparent px-12 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:border-slate-800 focus:ring-3 focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+            />
+            <span className="absolute text-gray-400 -translate-y-1/2 left-4 top-1/2">
+              🔍
+            </span>
+          </div>
+
+          {/* Mobile Menu Toggle (3 dots) */}
           <button
-            onClick={handleToggleSidebar}
-            aria-label="Toggle Sidebar"
-            className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 lg:w-11 lg:h-11"
+            onClick={toggleApplicationMenu}
+            className="z-50 flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg hover:bg-gray-100 lg:hidden dark:text-gray-400 dark:hover:bg-gray-800"
           >
-            {isMobileOpen ? (
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M6.21967 7.28131C5.92678 6.98841 5.92678 6.51354 6.21967 6.22065C6.51256 5.92775 6.98744 5.92775 7.28033 6.22065L11.999 10.9393L16.7176 6.22078C17.0105 5.92789 17.4854 5.92788 17.7782 6.22078C18.0711 6.51367 18.0711 6.98855 17.7782 7.28144L13.0597 12L17.7782 16.7186C18.0711 17.0115 18.0711 17.4863 17.7782 17.7792C17.4854 18.0721 17.0105 18.0721 16.7176 17.7792L11.999 13.0607L7.28033 17.7794C6.98744 18.0722 6.51256 18.0722 6.21967 17.7794C5.92678 17.4865 5.92678 17.0116 6.21967 16.7187L10.9384 12L6.21967 7.28131Z"
-                  fill="currentColor"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-6 h-6 text-gray-600 dark:text-gray-300"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M5.99902 10.4951C6.82745 10.4951 7.49902 11.1667 7.49902 11.9951V12.0051C7.49902 12.8335 6.82745 13.5051 5.99902 13.5051C5.1706 13.5051 4.49902 12.8335 4.49902 12.0051V11.9951C4.49902 11.1667 5.1706 10.4951 5.99902 10.4951ZM17.999 10.4951C18.8275 10.4951 19.499 11.1667 19.499 11.9951V12.0051C19.499 12.8335 18.8275 13.5051 17.999 13.5051C17.1706 13.5051 16.499 12.8335 16.499 12.0051V11.9951C16.499 11.1667 17.1706 10.4951 17.999 10.4951ZM13.499 11.9951C13.499 11.1667 12.8275 10.4951 11.999 10.4951C11.1706 10.4951 10.499 11.1667 10.499 11.9951V12.0051C10.499 12.8335 11.1706 13.5051 11.999 13.5051C12.8275 13.5051 13.499 12.8335 13.499 12.0051V11.9951Z"
+                fill="currentColor"
+              />
+            </svg>
           </button>
 
-          <Link href="/" className="lg:hidden">
-            <Image
-              width={154}
-              height={32}
-              className="dark:hidden"
-              src="/images/logo/icgc.jpg"
-              alt="Logo"
-            />
-            <Image
-              width={154}
-              height={32}
-              className="hidden dark:block"
-              src="/images/logo/icgc.jpg"
-              alt="Logo"
-            />
-          </Link>
+          {/* Right Section: Notifications + User (desktop) */}
+          <div className="items-center hidden gap-4 ml-auto lg:flex">
+            <NotificationDropdown />
+            <UserDropdown />
+          </div>
         </div>
 
-        {/* Middle Section: Search */}
-        <div className="hidden lg:block relative w-80">
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Search or type command..."
-            className="h-11 w-full rounded-lg border border-gray-200 bg-transparent px-12 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:border-slate-800 focus:ring-3 focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-          />
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-            🔍
-          </span>
-        </div>
-
-        {/* Right Section: Notifications + User */}
-        <div className="ml-auto flex items-center gap-4">
-          <NotificationDropdown />
-          <UserDropdown />
+        {/* Mobile Application Menu Section */}
+        <div
+          className={`${
+            isApplicationMenuOpen ? "flex" : "hidden"
+          } w-full items-center justify-between gap-4 px-5 py-4 lg:hidden border-t border-gray-200 dark:border-gray-800`}
+        >
+          <div className="flex items-center gap-3">
+            <NotificationDropdown />
+            <UserDropdown />
+          </div>
         </div>
       </div>
     </header>

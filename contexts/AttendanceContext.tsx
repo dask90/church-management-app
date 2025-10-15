@@ -43,12 +43,8 @@ export function AttendanceProvider({ children }: { children: ReactNode }) {
         const storedRecords = localStorage.getItem("church-attendance");
         const storedServices = localStorage.getItem("church-services");
 
-        if (storedRecords) {
-          setAttendanceRecords(JSON.parse(storedRecords));
-        }
-        if (storedServices) {
-          setServices(JSON.parse(storedServices));
-        }
+        if (storedRecords) setAttendanceRecords(JSON.parse(storedRecords));
+        if (storedServices) setServices(JSON.parse(storedServices));
       } catch (error) {
         console.error("Error loading attendance data:", error);
       } finally {
@@ -75,7 +71,6 @@ export function AttendanceProvider({ children }: { children: ReactNode }) {
       ...record,
       id: Math.random().toString(36).substr(2, 9),
     }));
-
     setAttendanceRecords((prev) => [...prev, ...newRecords]);
   };
 
@@ -88,17 +83,15 @@ export function AttendanceProvider({ children }: { children: ReactNode }) {
       totalPresent: 0,
       totalMembers: 0,
     };
-
     setServices((prev) => [...prev, newService]);
     return newService;
   };
 
-  const getMemberAttendance = (memberId: string): AttendanceRecord[] => {
-    return attendanceRecords.filter((record) => record.memberId === memberId);
-  };
+  const getMemberAttendance = (memberId: string): AttendanceRecord[] =>
+    attendanceRecords.filter((record) => record.memberId === memberId);
 
-  const getServiceAttendance = (serviceId: string): AttendanceRecord[] => {
-    return attendanceRecords.filter((record) => {
+  const getServiceAttendance = (serviceId: string): AttendanceRecord[] =>
+    attendanceRecords.filter((record) => {
       const service = services.find((s) => s.id === serviceId);
       return (
         service &&
@@ -106,7 +99,6 @@ export function AttendanceProvider({ children }: { children: ReactNode }) {
         record.serviceType === service.type
       );
     });
-  };
 
   const getAttendanceStats = (totalMembers: number) => {
     const totalServices = services.length;
@@ -117,7 +109,6 @@ export function AttendanceProvider({ children }: { children: ReactNode }) {
         ? Math.round((totalPresent / (totalServices * totalMembers)) * 100)
         : 0;
 
-    // Get last 4 services for recent attendance
     const recentServices = services
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, 4);
@@ -160,8 +151,7 @@ export function AttendanceProvider({ children }: { children: ReactNode }) {
 
 export function useAttendance() {
   const context = useContext(AttendanceContext);
-  if (context === undefined) {
+  if (context === undefined)
     throw new Error("useAttendance must be used within an AttendanceProvider");
-  }
   return context;
 }
