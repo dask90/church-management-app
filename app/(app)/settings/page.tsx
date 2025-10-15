@@ -30,15 +30,15 @@ export default function SettingsPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-        <p className="text-gray-600 mt-2">
+        <p className="mt-2 text-gray-600">
           Manage your church management system configuration
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6">
+      <div className="flex flex-col gap-6 lg:flex-row">
         {/* Sidebar Navigation */}
         <div className="lg:w-64">
-          <nav className="bg-white shadow rounded-lg p-4">
+          <nav className="p-4 bg-white rounded-lg shadow">
             <div className="space-y-1">
               {tabs.map((tab) => {
                 if (
@@ -66,8 +66,8 @@ export default function SettingsPage() {
           </nav>
 
           {/* System Info */}
-          <div className="mt-6 bg-white shadow rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-900 mb-3">
+          <div className="p-4 mt-6 bg-white rounded-lg shadow">
+            <h3 className="mb-3 text-sm font-medium text-gray-900">
               System Information
             </h3>
             <div className="space-y-2 text-xs text-gray-600">
@@ -89,7 +89,7 @@ export default function SettingsPage() {
 
         {/* Main Content */}
         <div className="flex-1">
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-white rounded-lg shadow">
             {activeTab === "general" && <GeneralSettings />}
             {activeTab === "church" && <ChurchSettings />}
             {activeTab === "users" && user?.role === "admin" && (
@@ -137,15 +137,15 @@ function GeneralSettings() {
     <div>
       <div className="px-6 py-4 border-b border-gray-200">
         <h2 className="text-lg font-medium text-gray-900">General Settings</h2>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="mt-1 text-sm text-gray-600">
           Basic configuration for your church management system
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="p-6 space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Church Name
             </label>
             <input
@@ -158,7 +158,7 @@ function GeneralSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Timezone
             </label>
             <select
@@ -175,7 +175,7 @@ function GeneralSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Date Format
             </label>
             <select
@@ -191,7 +191,7 @@ function GeneralSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Time Format
             </label>
             <select
@@ -206,7 +206,7 @@ function GeneralSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Language
             </label>
             <select
@@ -222,7 +222,7 @@ function GeneralSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Currency
             </label>
             <select
@@ -286,15 +286,15 @@ function ChurchSettings() {
         <h2 className="text-lg font-medium text-gray-900">
           Church Information
         </h2>
-        <p className="text-sm text-gray-600 mt-1">
-          Update your church's contact information and details
+        <p className="mt-1 text-sm text-gray-600">
+          Update your church&apos;s contact information and details
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="p-6 space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Church Address
             </label>
             <input
@@ -307,7 +307,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               City
             </label>
             <input
@@ -320,7 +320,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               State
             </label>
             <input
@@ -333,7 +333,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               ZIP Code
             </label>
             <input
@@ -346,7 +346,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Phone Number
             </label>
             <input
@@ -359,7 +359,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Email Address
             </label>
             <input
@@ -372,7 +372,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Website
             </label>
             <input
@@ -385,7 +385,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Senior Pastor
             </label>
             <input
@@ -398,7 +398,7 @@ function ChurchSettings() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Year Founded
             </label>
             <input
@@ -411,7 +411,7 @@ function ChurchSettings() {
           </div>
 
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Service Times
             </label>
             <textarea
@@ -445,10 +445,10 @@ function UsersSettings() {
 
   return (
     <div>
-      <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
         <div>
           <h2 className="text-lg font-medium text-gray-900">User Management</h2>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="mt-1 text-sm text-gray-600">
             Manage system users and their permissions
           </p>
         </div>
@@ -462,20 +462,20 @@ function UsersSettings() {
 
       <div className="p-6">
         {users && users.length > 0 ? (
-          <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+          <div className="overflow-hidden rounded-lg shadow ring-1 ring-black ring-opacity-5">
             <table className="min-w-full divide-y divide-gray-300">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                     User
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                     Role
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                     Actions
                   </th>
                 </tr>
@@ -485,7 +485,7 @@ function UsersSettings() {
                   <tr key={user.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                        <div className="flex items-center justify-center w-8 h-8 text-sm font-semibold text-white bg-blue-500 rounded-full">
                           {user.name.charAt(0).toUpperCase()}
                         </div>
                         <div className="ml-4">
@@ -508,8 +508,8 @@ function UsersSettings() {
                         Active
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button className="text-blue-600 hover:text-blue-900 mr-4">
+                    <td className="px-6 py-4 text-sm font-medium whitespace-nowrap">
+                      <button className="mr-4 text-blue-600 hover:text-blue-900">
                         Edit
                       </button>
                       <button className="text-red-600 hover:text-red-900">
@@ -522,14 +522,14 @@ function UsersSettings() {
             </table>
           </div>
         ) : (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="py-12 text-center">
+            <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full">
               <span className="text-2xl">👥</span>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+            <h3 className="mb-2 text-lg font-medium text-gray-900">
               No users found
             </h3>
-            <p className="text-gray-500 mb-6">
+            <p className="mb-6 text-gray-500">
               Get started by adding your first user to the system.
             </p>
             <button
@@ -544,12 +544,12 @@ function UsersSettings() {
 
       {/* Add User Modal */}
       {showAddUser && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-full max-w-md p-6 mx-4 bg-white rounded-lg">
+            <h3 className="mb-4 text-lg font-medium text-gray-900">
               Add New User
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="mb-6 text-gray-600">
               User management functionality will be implemented in the next
               update.
             </p>
@@ -593,31 +593,31 @@ function RolesSettings() {
     <div>
       <div className="px-6 py-4 border-b border-gray-200">
         <h2 className="text-lg font-medium text-gray-900">Role Management</h2>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="mt-1 text-sm text-gray-600">
           Configure user roles and permissions
         </p>
       </div>
 
       <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {roles.map((role) => (
-            <div key={role.name} className="bg-gray-50 rounded-lg p-6">
+            <div key={role.name} className="p-6 rounded-lg bg-gray-50">
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">
                     {role.name}
                   </h3>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="mt-1 text-sm text-gray-600">
                     {role.description}
                   </p>
                 </div>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                <span className="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
                   {role.permissions.length} permissions
                 </span>
               </div>
 
               <div className="mb-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-2">
+                <h4 className="mb-2 text-sm font-medium text-gray-700">
                   Permissions:
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -625,13 +625,13 @@ function RolesSettings() {
                     role.permissions.map((permission, index) => (
                       <span
                         key={index}
-                        className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800"
+                        className="inline-flex items-center px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded"
                       >
                         {permission}
                       </span>
                     ))
                   ) : (
-                    <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800">
+                    <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded">
                       {role.permissions}
                     </span>
                   )}
@@ -652,11 +652,11 @@ function RolesSettings() {
           ))}
         </div>
 
-        <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-          <h3 className="text-lg font-medium text-blue-900 mb-2">
+        <div className="p-6 mt-8 rounded-lg bg-blue-50">
+          <h3 className="mb-2 text-lg font-medium text-blue-900">
             Need custom roles?
           </h3>
-          <p className="text-blue-700 mb-4">
+          <p className="mb-4 text-blue-700">
             Contact support to create custom roles with specific permissions for
             your church's unique needs.
           </p>
@@ -699,7 +699,7 @@ function NotificationsSettings() {
         <h2 className="text-lg font-medium text-gray-900">
           Notification Settings
         </h2>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="mt-1 text-sm text-gray-600">
           Configure how you receive notifications and alerts
         </p>
       </div>
@@ -708,7 +708,7 @@ function NotificationsSettings() {
         <div className="space-y-6">
           {/* Notification Channels */}
           <div>
-            <h3 className="text-md font-medium text-gray-900 mb-4">
+            <h3 className="mb-4 font-medium text-gray-900 text-md">
               Notification Channels
             </h3>
             <div className="space-y-4">
@@ -772,7 +772,7 @@ function NotificationsSettings() {
 
           {/* Notification Types */}
           <div>
-            <h3 className="text-md font-medium text-gray-900 mb-4">
+            <h3 className="mb-4 font-medium text-gray-900 text-md">
               Notification Types
             </h3>
             <div className="space-y-4">
@@ -860,7 +860,7 @@ function SecuritySettings() {
     <div>
       <div className="px-6 py-4 border-b border-gray-200">
         <h2 className="text-lg font-medium text-gray-900">Security Settings</h2>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="mt-1 text-sm text-gray-600">
           Configure security preferences and access controls
         </p>
       </div>
@@ -898,7 +898,7 @@ function SecuritySettings() {
 
         {/* Session Timeout */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-700">
             Session Timeout (minutes)
           </label>
           <select
@@ -921,7 +921,7 @@ function SecuritySettings() {
 
         {/* Password Expiry */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-700">
             Password Expiry (days)
           </label>
           <select
@@ -972,25 +972,25 @@ function SecuritySettings() {
 
         {/* Security Actions */}
         <div className="pt-6 border-t border-gray-200">
-          <h3 className="text-sm font-medium text-gray-900 mb-4">
+          <h3 className="mb-4 text-sm font-medium text-gray-900">
             Security Actions
           </h3>
           <div className="space-y-3">
             <button
               type="button"
-              className="w-full text-left px-4 py-3 text-sm text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100"
+              className="w-full px-4 py-3 text-sm text-left text-blue-600 rounded-md bg-blue-50 hover:bg-blue-100"
             >
               Change Password
             </button>
             <button
               type="button"
-              className="w-full text-left px-4 py-3 text-sm text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100"
+              className="w-full px-4 py-3 text-sm text-left text-blue-600 rounded-md bg-blue-50 hover:bg-blue-100"
             >
               View Login History
             </button>
             <button
               type="button"
-              className="w-full text-left px-4 py-3 text-sm text-red-600 bg-red-50 rounded-md hover:bg-red-100"
+              className="w-full px-4 py-3 text-sm text-left text-red-600 rounded-md bg-red-50 hover:bg-red-100"
             >
               Log Out All Devices
             </button>

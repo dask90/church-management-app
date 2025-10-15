@@ -30,7 +30,6 @@ export default function Sidebar() {
     return pathname.startsWith(href) && href !== "/dashboard";
   };
 
-  // Amber-300 hex (Tailwind) for exact match
   const AMBER_300 = "#fcd34d";
   const INACTIVE_ICON = "#374151";
 

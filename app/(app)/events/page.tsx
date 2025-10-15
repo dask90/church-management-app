@@ -46,7 +46,7 @@ export default function EventsPage() {
   if (isLoading) {
     return (
       <div className="p-6">
-        <div className="text-center py-8">
+        <div className="py-8 text-center">
           <div className="text-lg text-gray-600">Loading events...</div>
         </div>
       </div>
@@ -56,16 +56,16 @@ export default function EventsPage() {
   return (
     <div className="p-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Events</h1>
-          <p className="text-gray-600 mt-2">
+          <p className="mt-2 text-gray-600">
             Manage church events and activities
           </p>
         </div>
         <Link
           href="/events/add"
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+          className="px-4 py-2 text-sm font-medium rounded-md bg-slate-900 text-amber-300"
         >
           Create Event
         </Link>
@@ -74,12 +74,12 @@ export default function EventsPage() {
       {/* Tab Navigation */}
       <div className="mb-6">
         <div className="border-b border-gray-200">
-          <nav className="-mb-px flex space-x-8">
+          <nav className="flex -mb-px space-x-8">
             <button
               onClick={() => setActiveTab("upcoming")}
               className={`py-2 px-1 border-b-2 font-medium text-sm ${
                 activeTab === "upcoming"
-                  ? "border-blue-500 text-blue-600"
+                  ? "border-amber-300 text-slate-900"
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
@@ -89,7 +89,7 @@ export default function EventsPage() {
               onClick={() => setActiveTab("past")}
               className={`py-2 px-1 border-b-2 font-medium text-sm ${
                 activeTab === "past"
-                  ? "border-blue-500 text-blue-600"
+                  ? "border-amber-300 text-slate-900"
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
@@ -100,7 +100,7 @@ export default function EventsPage() {
       </div>
 
       {/* Events List */}
-      <div className="bg-white shadow rounded-lg overflow-hidden">
+      <div className="overflow-hidden bg-white rounded-lg shadow">
         {activeTab === "upcoming" ? (
           upcomingEvents.length > 0 ? (
             <div className="divide-y divide-gray-200">
@@ -124,7 +124,7 @@ export default function EventsPage() {
 
                       <p className="mt-1 text-gray-600">{event.description}</p>
 
-                      <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-gray-500">
+                      <div className="grid grid-cols-1 gap-4 mt-3 text-sm text-gray-500 sm:grid-cols-3">
                         <div className="flex items-center">
                           <svg
                             className="w-4 h-4 mr-2 text-gray-400"
@@ -182,7 +182,7 @@ export default function EventsPage() {
                         </div>
                       </div>
 
-                      <div className="mt-3 flex items-center text-sm text-gray-500">
+                      <div className="flex items-center mt-3 text-sm text-gray-500">
                         <svg
                           className="w-4 h-4 mr-2 text-gray-400"
                           fill="none"
@@ -200,10 +200,10 @@ export default function EventsPage() {
                       </div>
                     </div>
 
-                    <div className="ml-6 flex items-center space-x-2">
+                    <div className="flex items-center ml-6 space-x-2">
                       <Link
                         href={`/events/${event.id}`}
-                        className="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                        className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-md bg-slate-900 text-amber-300"
                       >
                         View
                       </Link>
@@ -219,27 +219,23 @@ export default function EventsPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
-              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">📅</span>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+            <div className="py-12 text-center">
+              <h3 className="mb-2 text-lg font-medium text-gray-900">
                 No upcoming events
               </h3>
-              <p className="text-gray-500 mb-6">
+              <p className="mb-6 text-gray-500">
                 Schedule your first event to get started.
               </p>
               <Link
                 href="/events/add"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-900"
               >
                 Create Your First Event
               </Link>
             </div>
           )
-        ) : // Past Events
-        pastEvents.length > 0 ? (
-          <div className="divide-y divide-gray-200">
+        ) : pastEvents.length > 0 ? (
+          <div className="divide-y divide-gray-200 ">
             {pastEvents.map((event) => (
               <div key={event.id} className="p-6 hover:bg-gray-50">
                 <div className="flex items-start justify-between">
@@ -260,7 +256,7 @@ export default function EventsPage() {
 
                     <p className="mt-1 text-gray-600">{event.description}</p>
 
-                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-gray-500">
+                    <div className="grid grid-cols-1 gap-4 mt-3 text-sm text-gray-500 sm:grid-cols-3">
                       <div className="flex items-center">
                         <svg
                           className="w-4 h-4 mr-2 text-gray-400"
@@ -322,7 +318,7 @@ export default function EventsPage() {
                   <div className="ml-6">
                     <Link
                       href={`/events/${event.id}`}
-                      className="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                      className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-md text-amber-300 bg-slate-900"
                     >
                       View
                     </Link>
@@ -332,15 +328,12 @@ export default function EventsPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">📅</span>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+          <div className="py-12 text-center">
+            <h3 className="mb-2 text-lg font-medium text-gray-900">
               No past events
             </h3>
             <p className="text-gray-500">
-              Past events will appear here once they're completed.
+              Past events will appear here once they&apos;re completed.
             </p>
           </div>
         )}
@@ -348,12 +341,12 @@ export default function EventsPage() {
 
       {/* Delete Confirmation Modal */}
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md mx-4">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="max-w-md p-6 mx-4 bg-white rounded-lg">
+            <h3 className="mb-4 text-lg font-medium text-gray-900">
               Delete Event
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="mb-6 text-gray-600">
               Are you sure you want to delete this event? This action cannot be
               undone.
             </p>

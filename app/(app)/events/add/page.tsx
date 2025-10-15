@@ -80,8 +80,8 @@ export default function AddEvent() {
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <div className="p-6">
-      <div className="mb-6">
+    <div className="p-3">
+      <div className="mb-4">
         <Link
           href="/events"
           className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
@@ -103,200 +103,194 @@ export default function AddEvent() {
         </Link>
       </div>
 
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Create New Event</h1>
-          <p className="text-gray-600 mt-2">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold text-gray-900">Create New Event</h1>
+          <p className="mt-1 text-sm text-gray-600">
             Schedule a new church event or activity
           </p>
         </div>
 
         {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
+          <div className="px-3 py-2 mb-4 text-sm text-red-600 border border-red-200 rounded-lg bg-red-50">
             {error}
           </div>
         )}
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-sm rounded-lg p-6 border border-gray-200"
+          className="p-6 bg-white border rounded-lg shadow-sm border-slate-900"
         >
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {/* Basic Information */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
+            <div className="md:col-span-3">
+              <h3 className="mb-3 font-medium text-gray-900 text-md">
                 Basic Information
               </h3>
+            </div>
 
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Event Title <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    required
-                    value={formData.title}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Enter event title"
-                  />
-                </div>
+            <div className="md:col-span-2">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Event Title <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="title"
+                required
+                value={formData.title}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter event title"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    rows={4}
-                    value={formData.description}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Describe the event..."
-                  />
-                </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Event Type <span className="text-red-500">*</span>
+              </label>
+              <select
+                name="type"
+                required
+                value={formData.type}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                {EVENT_TYPES.map((type) => (
+                  <option key={type} value={type}>
+                    {type.charAt(0).toUpperCase() + type.slice(1)}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Event Type <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    name="type"
-                    required
-                    value={formData.type}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  >
-                    {EVENT_TYPES.map((type) => (
-                      <option key={type} value={type}>
-                        {type.charAt(0).toUpperCase() + type.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+            <div className="md:col-span-3">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Description
+              </label>
+              <textarea
+                name="description"
+                rows={2}
+                value={formData.description}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Describe the event..."
+              />
             </div>
 
             {/* Date & Time */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
+            <div className="mt-2 md:col-span-3">
+              <h3 className="mb-3 font-medium text-gray-900 text-md">
                 Date & Time
               </h3>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Date <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="date"
-                    name="date"
-                    required
-                    min={today}
-                    value={formData.date}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Date <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="date"
+                name="date"
+                required
+                min={today}
+                value={formData.date}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Start Time <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="time"
-                    name="startTime"
-                    required
-                    value={formData.startTime}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Start Time <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="time"
+                name="startTime"
+                required
+                value={formData.startTime}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    End Time <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="time"
-                    name="endTime"
-                    required
-                    value={formData.endTime}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-              </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                End Time <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="time"
+                name="endTime"
+                required
+                value={formData.endTime}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
             </div>
 
             {/* Location & Organizer */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
+            <div className="mt-2 md:col-span-3">
+              <h3 className="mb-3 font-medium text-gray-900 text-md">
                 Location & Organizer
               </h3>
+            </div>
 
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Venue <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="venue"
-                    required
-                    value={formData.venue}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Enter venue name"
-                  />
-                </div>
+            <div className="md:col-span-2">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Venue <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="venue"
+                required
+                value={formData.venue}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter venue name"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Organizer <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="organizer"
-                    required
-                    value={formData.organizer}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Enter organizer name"
-                  />
-                </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Capacity
+              </label>
+              <input
+                type="number"
+                name="capacity"
+                min="1"
+                value={formData.capacity}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Max capacity"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Capacity (Optional)
-                  </label>
-                  <input
-                    type="number"
-                    name="capacity"
-                    min="1"
-                    value={formData.capacity}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Enter maximum capacity"
-                  />
-                </div>
-              </div>
+            <div className="md:col-span-3">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Organizer <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="organizer"
+                required
+                value={formData.organizer}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter organizer name"
+              />
             </div>
           </div>
 
-          <div className="mt-8 flex justify-end space-x-3">
+          <div className="flex justify-end mt-6 space-x-2">
             <Link
               href="/events"
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="px-6 py-2 text-sm font-medium text-white bg-red-600 border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
               Cancel
             </Link>
             <button
               type="submit"
               disabled={isLoading}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+              className="px-6 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
             >
               {isLoading ? "Creating Event..." : "Create Event"}
             </button>

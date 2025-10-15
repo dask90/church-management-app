@@ -7,28 +7,28 @@ export default function Members() {
   const { members, isLoading } = useMembers();
 
   if (isLoading) {
-    return <div className="p-6">Loading...</div>;
+    return <div className="p-6">.</div>;
   }
 
   return (
     <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-semibold text-gray-900">Members</h1>
         <Link
           href="/members/add"
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          className="px-4 py-2 rounded-md text-amber-300 bg-slate-900 hover:bg-slate-700"
         >
           Add Member
         </Link>
       </div>
 
-      <div className="bg-white shadow overflow-hidden sm:rounded-md">
-        <ul className="divide-y divide-gray-200">
+      <div className="overflow-hidden bg-white border shadow border-slate-900 sm:rounded-md">
+        <ul className="divide-y divide-slate-300">
           {members.map((member) => (
             <li key={member.id}>
-              <div className="px-4 py-4 flex items-center justify-between sm:px-6">
+              <div className="flex items-center justify-between px-4 py-6 sm:px-6">
                 <div className="flex items-center">
-                  <div className="min-w-0 flex-1">
+                  <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate">
                       {member.firstName} {member.lastName}
                     </p>
@@ -44,7 +44,7 @@ export default function Members() {
                   {/* View Details Action */}
                   <Link
                     href={`/members/${member.id}`}
-                    className="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                    className="inline-flex items-center px-2 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-900 hover:bg-blue-700"
                   >
                     <svg
                       className="w-4 h-4 mr-1"

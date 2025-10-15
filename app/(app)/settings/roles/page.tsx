@@ -76,10 +76,10 @@ export default function RolesManagement() {
         </Link>
       </div>
 
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Role Management</h1>
-          <p className="text-gray-600 mt-2">
+          <p className="mt-2 text-gray-600">
             Configure user roles and permissions across the system
           </p>
         </div>
@@ -88,11 +88,11 @@ export default function RolesManagement() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {roles.map((role) => (
           <div
             key={role.name}
-            className="bg-white shadow rounded-lg overflow-hidden"
+            className="overflow-hidden bg-white rounded-lg shadow"
           >
             <div className="p-6">
               <div className="flex items-start justify-between mb-4">
@@ -100,7 +100,7 @@ export default function RolesManagement() {
                   <h3 className="text-lg font-medium text-gray-900">
                     {role.name}
                   </h3>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="mt-1 text-sm text-gray-600">
                     {role.description}
                   </p>
                 </div>
@@ -113,7 +113,7 @@ export default function RolesManagement() {
               </div>
 
               <div className="mb-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-2">
+                <h4 className="mb-2 text-sm font-medium text-gray-700">
                   Permissions:
                 </h4>
                 <ul className="space-y-1">
@@ -141,7 +141,7 @@ export default function RolesManagement() {
                 </ul>
               </div>
 
-              <div className="flex space-x-3 pt-4 border-t border-gray-200">
+              <div className="flex pt-4 space-x-3 border-t border-gray-200">
                 <button className="flex-1 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
                   Edit Role
                 </button>
@@ -157,15 +157,15 @@ export default function RolesManagement() {
       </div>
 
       {/* Custom Roles Section */}
-      <div className="mt-8 bg-blue-50 rounded-lg p-6">
+      <div className="p-6 mt-8 rounded-lg bg-blue-50">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-lg font-medium text-blue-900 mb-2">
+            <h3 className="mb-2 text-lg font-medium text-blue-900">
               Need custom roles?
             </h3>
             <p className="text-blue-700">
               Contact our support team to create custom roles tailored to your
-              church's specific needs and workflows.
+              church&apos;s specific needs and workflows.
             </p>
           </div>
           <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">

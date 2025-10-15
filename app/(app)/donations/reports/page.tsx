@@ -42,34 +42,31 @@ export default function DonationReports() {
 
   return (
     <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Donation Reports</h1>
-          <p className="text-gray-600 mt-2">
+          <p className="mt-2 text-gray-600">
             Financial summaries and giving trends
           </p>
         </div>
         <Link
           href="/donations"
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+          className="px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-900"
         >
           View All Donations
         </Link>
       </div>
 
       {isLoading ? (
-        <div className="text-center py-8">
-          <p className="text-gray-500">Loading reports...</p>
+        <div className="py-8 text-center">
+          <p className="text-gray-500"></p>
         </div>
       ) : (
         <>
           {/* Summary Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white shadow rounded-lg p-6">
+          <div className="grid grid-cols-1 gap-6 mb-8 md:grid-cols-4">
+            <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
               <div className="flex items-center">
-                <div className="flex-shrink-0 p-3 rounded-md bg-green-500 bg-opacity-10">
-                  <span className="text-2xl">💰</span>
-                </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-500">
                     Total Donations
@@ -81,11 +78,8 @@ export default function DonationReports() {
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-6">
+            <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
               <div className="flex items-center">
-                <div className="flex-shrink-0 p-3 rounded-md bg-blue-500 bg-opacity-10">
-                  <span className="text-2xl">⛪</span>
-                </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-500">
                     Total Tithes
@@ -97,11 +91,8 @@ export default function DonationReports() {
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-6">
+            <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
               <div className="flex items-center">
-                <div className="flex-shrink-0 p-3 rounded-md bg-purple-500 bg-opacity-10">
-                  <span className="text-2xl">🙏</span>
-                </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-500">
                     Total Offerings
@@ -113,11 +104,8 @@ export default function DonationReports() {
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-6">
+            <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
               <div className="flex items-center">
-                <div className="flex-shrink-0 p-3 rounded-md bg-orange-500 bg-opacity-10">
-                  <span className="text-2xl">📝</span>
-                </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-500">
                     Total Pledges
@@ -130,9 +118,9 @@ export default function DonationReports() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* Monthly Breakdown */}
-            <div className="bg-white shadow rounded-lg">
+            <div className="bg-white border rounded-lg shadow border-slate-900">
               <div className="px-6 py-4 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">
                   Monthly Breakdown
@@ -161,7 +149,7 @@ export default function DonationReports() {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8">
+                  <div className="py-8 text-center">
                     <p className="text-gray-500">No donation data available</p>
                   </div>
                 )}
@@ -169,7 +157,7 @@ export default function DonationReports() {
             </div>
 
             {/* Donation Type Breakdown */}
-            <div className="bg-white shadow rounded-lg">
+            <div className="bg-white border rounded-lg shadow border-slate-900">
               <div className="px-6 py-4 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">
                   Donation Type Breakdown
@@ -188,7 +176,7 @@ export default function DonationReports() {
                             {formatCurrency(item.amount)}
                           </span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="w-full h-2 bg-gray-200 rounded-full">
                           <div
                             className={`h-2 rounded-full ${item.color}`}
                             style={{ width: `${item.percentage}%` }}
@@ -202,7 +190,7 @@ export default function DonationReports() {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8">
+                  <div className="py-8 text-center">
                     <p className="text-gray-500">
                       No donation type data available
                     </p>
@@ -212,7 +200,7 @@ export default function DonationReports() {
             </div>
 
             {/* Recent Donations */}
-            <div className="bg-white shadow rounded-lg">
+            <div className="bg-white border rounded-lg shadow border-slate-900">
               <div className="px-6 py-4 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">
                   Recent Donations
@@ -251,7 +239,7 @@ export default function DonationReports() {
                     })}
                   </div>
                 ) : (
-                  <div className="text-center py-8">
+                  <div className="py-8 text-center">
                     <p className="text-gray-500">No recent donations</p>
                   </div>
                 )}
@@ -259,7 +247,7 @@ export default function DonationReports() {
             </div>
 
             {/* Top Donors */}
-            <div className="bg-white shadow rounded-lg">
+            <div className="bg-white border rounded-lg shadow border-slate-900">
               <div className="px-6 py-4 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">
                   Top Donors
@@ -274,7 +262,7 @@ export default function DonationReports() {
                         className="flex items-center justify-between"
                       >
                         <div className="flex items-center">
-                          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-sm">
+                          <div className="flex items-center justify-center w-8 h-8 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full">
                             {getMemberName(donor.memberId)
                               .split(" ")
                               .map((n) => n[0])
@@ -295,7 +283,7 @@ export default function DonationReports() {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8">
+                  <div className="py-8 text-center">
                     <p className="text-gray-500">No donor data available</p>
                   </div>
                 )}

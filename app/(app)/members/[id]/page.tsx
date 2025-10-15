@@ -17,11 +17,11 @@ export default function MemberDetail() {
   if (!member) {
     return (
       <div className="p-6">
-        <div className="text-center py-12">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="py-12 text-center">
+          <h1 className="mb-4 text-2xl font-bold text-gray-900">
             Member Not Found
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="mb-6 text-gray-600">
             The member you're looking for doesn't exist.
           </p>
           <Link
@@ -69,7 +69,7 @@ export default function MemberDetail() {
       <div className="mb-6">
         <Link
           href="/members"
-          className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 mb-4"
+          className="inline-flex items-center mb-4 text-sm text-gray-500 hover:text-gray-700"
         >
           <svg
             className="w-4 h-4 mr-1"
@@ -87,12 +87,12 @@ export default function MemberDetail() {
           Back to Members
         </Link>
 
-        <div className="flex justify-between items-start">
+        <div className="flex items-start justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">
               {member.firstName} {member.lastName}
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="mt-2 text-gray-600">
               Member since {formatDate(member.joinDate)}
             </p>
           </div>
@@ -115,12 +115,12 @@ export default function MemberDetail() {
 
       {/* Delete Confirmation Modal */}
       {showDeleteConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md mx-4">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="max-w-md p-6 mx-4 bg-white rounded-lg">
+            <h3 className="mb-4 text-lg font-medium text-gray-900">
               Delete Member
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="mb-6 text-gray-600">
               Are you sure you want to delete {member.firstName}{" "}
               {member.lastName}? This action cannot be undone.
             </p>
@@ -142,20 +142,20 @@ export default function MemberDetail() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="space-y-6 lg:col-span-2">
           {/* Personal Information Card */}
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b border-gray-200">
               <h3 className="text-lg font-medium text-gray-900">
                 Personal Information
               </h3>
             </div>
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Full Name
                   </label>
                   <p className="text-gray-900">
@@ -163,7 +163,7 @@ export default function MemberDetail() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Birth Date
                   </label>
                   <p className="text-gray-900">
@@ -173,7 +173,7 @@ export default function MemberDetail() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Marital Status
                   </label>
                   <p className="text-gray-900 capitalize">
@@ -181,7 +181,7 @@ export default function MemberDetail() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Occupation
                   </label>
                   <p className="text-gray-900">
@@ -193,22 +193,22 @@ export default function MemberDetail() {
           </div>
 
           {/* Contact Information Card */}
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b border-gray-200">
               <h3 className="text-lg font-medium text-gray-900">
                 Contact Information
               </h3>
             </div>
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Email
                   </label>
                   <p className="text-gray-900">{member.email}</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Phone
                   </label>
                   <p className="text-gray-900">
@@ -216,7 +216,7 @@ export default function MemberDetail() {
                   </p>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Address
                   </label>
                   <p className="text-gray-900">
@@ -228,28 +228,28 @@ export default function MemberDetail() {
           </div>
 
           {/* Church Information Card */}
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b border-gray-200">
               <h3 className="text-lg font-medium text-gray-900">
                 Church Information
               </h3>
             </div>
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Branch
                   </label>
                   <p className="text-gray-900">{member.branch}</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Join Date
                   </label>
                   <p className="text-gray-900">{formatDate(member.joinDate)}</p>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block mb-1 text-sm font-medium text-gray-700">
                     Ministry Groups
                   </label>
                   <div className="flex flex-wrap gap-2 mt-2">
@@ -257,7 +257,7 @@ export default function MemberDetail() {
                       member.groups.map((group) => (
                         <span
                           key={group}
-                          className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+                          className="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
                         >
                           {group}
                         </span>
@@ -277,7 +277,7 @@ export default function MemberDetail() {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Member Summary Card */}
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b border-gray-200">
               <h3 className="text-lg font-medium text-gray-900">
                 Member Summary
@@ -285,14 +285,14 @@ export default function MemberDetail() {
             </div>
             <div className="p-6">
               <div className="text-center">
-                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-2xl mx-auto mb-4">
+                <div className="flex items-center justify-center w-20 h-20 mx-auto mb-4 text-2xl font-semibold text-blue-600 bg-blue-100 rounded-full">
                   {member.firstName.charAt(0)}
                   {member.lastName.charAt(0)}
                 </div>
                 <h4 className="text-lg font-medium text-gray-900">
                   {member.firstName} {member.lastName}
                 </h4>
-                <p className="text-gray-500 text-sm mt-1">
+                <p className="mt-1 text-sm text-gray-500">
                   {member.occupation || "No occupation specified"}
                 </p>
 
@@ -317,23 +317,23 @@ export default function MemberDetail() {
           </div>
 
           {/* Quick Actions Card */}
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b border-gray-200">
               <h3 className="text-lg font-medium text-gray-900">
                 Quick Actions
               </h3>
             </div>
             <div className="p-6 space-y-3">
-              <button className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-md">
+              <button className="w-full px-4 py-2 text-sm text-left text-blue-600 rounded-md hover:bg-blue-50">
                 Record Attendance
               </button>
-              <button className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-md">
+              <button className="w-full px-4 py-2 text-sm text-left text-blue-600 rounded-md hover:bg-blue-50">
                 Add Family Member
               </button>
-              <button className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-md">
+              <button className="w-full px-4 py-2 text-sm text-left text-blue-600 rounded-md hover:bg-blue-50">
                 Record Donation
               </button>
-              <button className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-md">
+              <button className="w-full px-4 py-2 text-sm text-left text-blue-600 rounded-md hover:bg-blue-50">
                 Send Message
               </button>
             </div>

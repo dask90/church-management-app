@@ -50,30 +50,27 @@ export default function AttendanceReports() {
 
   return (
     <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
             Attendance Reports
           </h1>
-          <p className="text-gray-600 mt-2">
+          <p className="mt-2 text-gray-600">
             View attendance statistics and trends
           </p>
         </div>
         <Link
           href="/attendance"
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+          className="px-4 py-2 text-sm font-medium rounded-md bg-slate-900 text-amber-300"
         >
           Mark Attendance
         </Link>
       </div>
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white shadow rounded-lg p-6">
+      <div className="grid grid-cols-1 gap-6 mb-8 md:grid-cols-4">
+        <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
           <div className="flex items-center">
-            <div className="flex-shrink-0 p-3 rounded-md bg-blue-500 bg-opacity-10">
-              <span className="text-2xl">📊</span>
-            </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">
                 Total Services
@@ -85,11 +82,8 @@ export default function AttendanceReports() {
           </div>
         </div>
 
-        <div className="bg-white shadow rounded-lg p-6">
+        <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
           <div className="flex items-center">
-            <div className="flex-shrink-0 p-3 rounded-md bg-green-500 bg-opacity-10">
-              <span className="text-2xl">👥</span>
-            </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">
                 Average Attendance
@@ -101,11 +95,8 @@ export default function AttendanceReports() {
           </div>
         </div>
 
-        <div className="bg-white shadow rounded-lg p-6">
+        <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
           <div className="flex items-center">
-            <div className="flex-shrink-0 p-3 rounded-md bg-purple-500 bg-opacity-10">
-              <span className="text-2xl">✅</span>
-            </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Total Members</p>
               <p className="text-2xl font-semibold text-gray-900">
@@ -115,11 +106,8 @@ export default function AttendanceReports() {
           </div>
         </div>
 
-        <div className="bg-white shadow rounded-lg p-6">
+        <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
           <div className="flex items-center">
-            <div className="flex-shrink-0 p-3 rounded-md bg-orange-500 bg-opacity-10">
-              <span className="text-2xl">📅</span>
-            </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">
                 Active Members
@@ -132,13 +120,11 @@ export default function AttendanceReports() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Recent Attendance */}
-        <div className="bg-white shadow rounded-lg">
+        <div className="bg-white border rounded-lg shadow border-slate-900">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">
-              Recent Services
-            </h3>
+            <h3 className="text-lg font-bold text-gray-900">Recent Services</h3>
           </div>
           <div className="p-6">
             {stats.recentAttendance.length > 0 ? (
@@ -166,7 +152,7 @@ export default function AttendanceReports() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8">
+              <div className="py-8 text-center">
                 <p className="text-gray-500">No attendance records yet</p>
                 <Link
                   href="/attendance"
@@ -180,7 +166,7 @@ export default function AttendanceReports() {
         </div>
 
         {/* Service Type Breakdown */}
-        <div className="bg-white shadow rounded-lg">
+        <div className="bg-white border rounded-lg shadow border-slate-900">
           <div className="px-6 py-4 border-b border-gray-200">
             <h3 className="text-lg font-medium text-gray-900">
               Service Type Breakdown
@@ -217,7 +203,7 @@ export default function AttendanceReports() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8">
+              <div className="py-8 text-center">
                 <p className="text-gray-500">No service data available</p>
               </div>
             )}
@@ -225,9 +211,9 @@ export default function AttendanceReports() {
         </div>
 
         {/* Member Attendance Ranking */}
-        <div className="lg:col-span-2 bg-white shadow rounded-lg">
+        <div className="bg-white border rounded-lg shadow border-slate-900 lg:col-span-2">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">
+            <h3 className="text-lg font-bold text-gray-900">
               Member Attendance Ranking
             </h3>
           </div>
@@ -237,16 +223,16 @@ export default function AttendanceReports() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Member
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Services Attended
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Attendance Rate
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Status
                       </th>
                     </tr>
@@ -256,7 +242,7 @@ export default function AttendanceReports() {
                       <tr key={member.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-sm">
+                            <div className="flex items-center justify-center w-8 h-8 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full">
                               {member.firstName.charAt(0)}
                               {member.lastName.charAt(0)}
                             </div>
@@ -267,14 +253,14 @@ export default function AttendanceReports() {
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
                           {member.attendedServices} / {member.totalServices}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div className="w-full h-2 bg-gray-200 rounded-full">
                               <div
-                                className="bg-green-600 h-2 rounded-full"
+                                className="h-2 bg-green-600 rounded-full"
                                 style={{ width: `${member.attendanceRate}%` }}
                               ></div>
                             </div>
@@ -306,7 +292,7 @@ export default function AttendanceReports() {
                 </table>
               </div>
             ) : (
-              <div className="text-center py-8">
+              <div className="py-8 text-center">
                 <p className="text-gray-500">No member data available</p>
               </div>
             )}

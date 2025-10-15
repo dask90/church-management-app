@@ -11,15 +11,15 @@ export default function Home() {
   useEffect(() => {
     if (!isLoading) {
       if (user) {
-        router.push("/dashboard");
-      } else {
         router.push("/login");
+      } else {
+        router.push("/dashboard");
       }
     }
   }, [user, isLoading, router]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
       <div className="text-center">
         <div className="text-lg text-gray-600">Redirecting...</div>
       </div>

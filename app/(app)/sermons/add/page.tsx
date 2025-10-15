@@ -95,8 +95,8 @@ export default function AddSermon() {
   };
 
   return (
-    <div className="p-6">
-      <div className="mb-6">
+    <div className="p-4">
+      <div className="mb-4">
         <Link
           href="/sermons"
           className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
@@ -118,202 +118,193 @@ export default function AddSermon() {
         </Link>
       </div>
 
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Add New Sermon</h1>
-          <p className="text-gray-600 mt-2">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold text-gray-900">Add New Sermon</h1>
+          <p className="mt-1 text-sm text-gray-600">
             Share a new sermon with your congregation
           </p>
         </div>
 
         {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
+          <div className="px-3 py-2 mb-4 text-sm text-red-600 border border-red-200 rounded-lg bg-red-50">
             {error}
           </div>
         )}
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-sm rounded-lg p-6 border border-gray-200"
+          className="p-6 bg-white border rounded-lg shadow-sm border-slate-900"
         >
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {/* Sermon Details */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
+            <div className="md:col-span-3">
+              <h3 className="mb-3 font-bold text-gray-900 text-md">
                 Sermon Details
               </h3>
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Title <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    required
-                    value={formData.title}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter sermon title"
-                  />
-                </div>
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Preacher <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="preacher"
-                    required
-                    value={formData.preacher}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter preacher's name"
-                  />
-                </div>
+            <div className="md:col-span-2">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Title <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="title"
+                required
+                value={formData.title}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-900"
+                placeholder="Enter sermon title"
+              />
+            </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Date <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="date"
-                      name="date"
-                      required
-                      value={formData.date}
-                      onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Media Type <span className="text-red-500">*</span>
+              </label>
+              <select
+                name="mediaType"
+                required
+                value={formData.mediaType}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-900"
+              >
+                {MEDIA_TYPES.map((type) => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Duration (minutes)
-                    </label>
-                    <input
-                      type="number"
-                      name="duration"
-                      min="1"
-                      value={formData.duration}
-                      onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                      placeholder="e.g., 45"
-                    />
-                  </div>
-                </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Preacher <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="preacher"
+                required
+                value={formData.preacher}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-900"
+                placeholder="Enter preacher's name"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Series
-                  </label>
-                  <input
-                    type="text"
-                    name="series"
-                    value={formData.series}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter sermon series (optional)"
-                  />
-                </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Date <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="date"
+                name="date"
+                required
+                value={formData.date}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-900"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    rows={4}
-                    value={formData.description}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter sermon description"
-                  />
-                </div>
-              </div>
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Duration (min)
+              </label>
+              <input
+                type="number"
+                name="duration"
+                min="1"
+                value={formData.duration}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-900"
+                placeholder="e.g., 45"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Series
+              </label>
+              <input
+                type="text"
+                name="series"
+                value={formData.series}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter sermon series (optional)"
+              />
+            </div>
+
+            <div className="md:col-span-3">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Description
+              </label>
+              <textarea
+                name="description"
+                rows={2}
+                value={formData.description}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter sermon description"
+              />
             </div>
 
             {/* Media Information */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
+            <div className="mt-2 md:col-span-3">
+              <h3 className="mb-3 font-bold text-gray-900 text-md">
                 Media Information
               </h3>
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Media Type <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    name="mediaType"
-                    required
-                    value={formData.mediaType}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  >
-                    {MEDIA_TYPES.map((type) => (
-                      <option key={type.value} value={type.value}>
-                        {type.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+            </div>
 
-                {/* Replace Media URL input with file upload */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Upload Media File <span className="text-red-500">*</span>
-                  </label>
-
-                  <div
-                    onClick={handleUploadClick}
-                    className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-6 text-gray-500 hover:border-blue-600 hover:text-blue-600 cursor-pointer"
-                  >
-                    <FaFileUpload size={24} className="mb-2" />
-                    <span>
-                      {file
-                        ? file.name
-                        : "Click to upload audio, video, or text"}
-                    </span>
-                  </div>
-
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="audio/*,video/*,.pdf,.doc,.docx,.txt"
-                    className="hidden"
-                    onChange={handleFileChange}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Tags
-                  </label>
-                  <input
-                    type="text"
-                    name="tags"
-                    value={formData.tags}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter tags separated by commas (e.g., grace, faith, salvation)"
-                  />
-                </div>
+            <div className="md:col-span-2">
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Upload Media File <span className="text-red-500">*</span>
+              </label>
+              <div
+                onClick={handleUploadClick}
+                className="flex flex-col items-center justify-center p-4 text-gray-500 border-2 border-gray-300 border-dashed rounded-md cursor-pointer hover:border-blue-600 hover:text-blue-600"
+              >
+                <FaFileUpload size={20} className="mb-1" />
+                <span className="text-sm text-center">
+                  {file ? file.name : "Click to upload audio, video, or text"}
+                </span>
               </div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="audio/*,video/*,.pdf,.doc,.docx,.txt"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Tags
+              </label>
+              <input
+                type="text"
+                name="tags"
+                value={formData.tags}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                placeholder="grace, faith, salvation"
+              />
             </div>
           </div>
 
-          <div className="mt-8 flex justify-end space-x-3">
+          <div className="flex justify-end mt-6 space-x-2">
             <Link
               href="/sermons"
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+              className="px-6 py-2 text-sm font-medium text-white bg-red-600 border rounded-md "
             >
               Cancel
             </Link>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50"
+              className="px-6 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-900 disabled:opacity-50"
             >
               {isSubmitting ? "Adding Sermon..." : "Add Sermon"}
             </button>
