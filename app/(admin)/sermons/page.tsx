@@ -32,7 +32,7 @@ export default function SermonsPage() {
         </div>
         <Link
           href="/sermons/add"
-          className="px-4 py-2 text-sm font-medium rounded-md bg-slate-900 text-amber-300 hover:bg-blue-700"
+          className="px-4 py-2 text-sm font-medium rounded-md bg-slate-900 text-amber-300"
         >
           Add Sermon
         </Link>
@@ -126,12 +126,12 @@ export default function SermonsPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-sm font-medium whitespace-nowrap">
-                        <Link
+                        {/* <Link
                           href={`/sermons/${sermon.id}`}
                           className="mr-4 text-blue-600 hover:text-blue-900"
                         >
                           View
-                        </Link>
+                        </Link> */}
                         <button
                           onClick={() => handleDelete(sermon.id)}
                           className="text-red-600 hover:text-red-900"

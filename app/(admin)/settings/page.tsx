@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useAuth } from "../../../contexts/AuthContext";
+import { Settings, Church, Users, Shield, Bell, Lock } from "lucide-react";
 
 type SettingsTab =
   | "general"
@@ -17,12 +17,36 @@ export default function SettingsPage() {
   const { user } = useAuth();
 
   const tabs = [
-    { id: "general" as SettingsTab, name: "General", icon: "⚙️" },
-    { id: "church" as SettingsTab, name: "Church Info", icon: "🏛️" },
-    { id: "users" as SettingsTab, name: "Users", icon: "👥" },
-    { id: "roles" as SettingsTab, name: "Roles", icon: "🎭" },
-    { id: "notifications" as SettingsTab, name: "Notifications", icon: "🔔" },
-    { id: "security" as SettingsTab, name: "Security", icon: "🔒" },
+    {
+      id: "general" as SettingsTab,
+      name: "General",
+      icon: <Settings className="w-4 h-4" />,
+    },
+    {
+      id: "church" as SettingsTab,
+      name: "Church Info",
+      icon: <Church className="w-4 h-4" />,
+    },
+    {
+      id: "users" as SettingsTab,
+      name: "Users",
+      icon: <Users className="w-4 h-4" />,
+    },
+    {
+      id: "roles" as SettingsTab,
+      name: "Roles",
+      icon: <Shield className="w-4 h-4" />,
+    },
+    {
+      id: "notifications" as SettingsTab,
+      name: "Notifications",
+      icon: <Bell className="w-4 h-4" />,
+    },
+    {
+      id: "security" as SettingsTab,
+      name: "Security",
+      icon: <Lock className="w-4 h-4" />,
+    },
   ];
 
   return (
@@ -37,8 +61,8 @@ export default function SettingsPage() {
 
       <div className="flex flex-col gap-6 lg:flex-row">
         {/* Sidebar Navigation */}
-        <div className="lg:w-64">
-          <nav className="p-4 bg-white rounded-lg shadow">
+        <div className="lg:w-64 ">
+          <nav className="p-4 bg-white border rounded-lg shadow border-slate-800">
             <div className="space-y-1">
               {tabs.map((tab) => {
                 if (
@@ -53,11 +77,11 @@ export default function SettingsPage() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                       activeTab === tab.id
-                        ? "bg-blue-100 text-blue-700"
+                        ? "bg-slate-800 text-amber-300"
                         : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                     }`}
                   >
-                    <span className="mr-3 text-lg">{tab.icon}</span>
+                    <span className="mr-3 text-gray-700">{tab.icon}</span>
                     {tab.name}
                   </button>
                 );
@@ -66,7 +90,7 @@ export default function SettingsPage() {
           </nav>
 
           {/* System Info */}
-          <div className="p-4 mt-6 bg-white rounded-lg shadow">
+          <div className="p-4 mt-6 bg-white border rounded-lg shadow border-slate-800">
             <h3 className="mb-3 text-sm font-medium text-gray-900">
               System Information
             </h3>
@@ -135,14 +159,17 @@ function GeneralSettings() {
 
   return (
     <div>
-      <div className="px-6 py-4 border-b border-gray-200">
+      <div className="px-6 py-4 border border-slate-800">
         <h2 className="text-lg font-medium text-gray-900">General Settings</h2>
         <p className="mt-1 text-sm text-gray-600">
           Basic configuration for your church management system
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-6 space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="p-6 space-y-6 border-b border-l border-r border-slate-800"
+      >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -153,7 +180,7 @@ function GeneralSettings() {
               name="churchName"
               value={formData.churchName}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -165,7 +192,7 @@ function GeneralSettings() {
               name="timezone"
               value={formData.timezone}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="America/New_York">Eastern Time (ET)</option>
               <option value="America/Chicago">Central Time (CT)</option>
@@ -182,7 +209,7 @@ function GeneralSettings() {
               name="dateFormat"
               value={formData.dateFormat}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="MM/DD/YYYY">MM/DD/YYYY</option>
               <option value="DD/MM/YYYY">DD/MM/YYYY</option>
@@ -198,7 +225,7 @@ function GeneralSettings() {
               name="timeFormat"
               value={formData.timeFormat}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="12h">12-hour</option>
               <option value="24h">24-hour</option>
@@ -213,7 +240,7 @@ function GeneralSettings() {
               name="language"
               value={formData.language}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="en">English</option>
               <option value="es">Spanish</option>
@@ -229,7 +256,7 @@ function GeneralSettings() {
               name="currency"
               value={formData.currency}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="USD">USD ($)</option>
               <option value="EUR">EUR (€)</option>
@@ -238,10 +265,10 @@ function GeneralSettings() {
           </div>
         </div>
 
-        <div className="flex justify-end pt-6 border-t border-gray-200">
+        <div className="flex justify-end pt-6 border-t border-gray-300">
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Save Changes
           </button>
@@ -255,7 +282,7 @@ function GeneralSettings() {
 function ChurchSettings() {
   const [formData, setFormData] = useState({
     address: "123 Church Street",
-    city: "Anytown",
+    city: "Accra",
     state: "CA",
     zipCode: "12345",
     phone: "(555) 123-4567",
@@ -282,7 +309,7 @@ function ChurchSettings() {
 
   return (
     <div>
-      <div className="px-6 py-4 border-b border-gray-200">
+      <div className="px-6 py-4 border border-slate-800">
         <h2 className="text-lg font-medium text-gray-900">
           Church Information
         </h2>
@@ -291,7 +318,10 @@ function ChurchSettings() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-6 space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="p-6 space-y-6 border-b border-l border-r border-slate-800"
+      >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="md:col-span-2">
             <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -302,7 +332,7 @@ function ChurchSettings() {
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -315,7 +345,7 @@ function ChurchSettings() {
               name="city"
               value={formData.city}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -328,7 +358,7 @@ function ChurchSettings() {
               name="state"
               value={formData.state}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -341,7 +371,7 @@ function ChurchSettings() {
               name="zipCode"
               value={formData.zipCode}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -354,7 +384,7 @@ function ChurchSettings() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -367,7 +397,7 @@ function ChurchSettings() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -380,7 +410,7 @@ function ChurchSettings() {
               name="website"
               value={formData.website}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -393,7 +423,7 @@ function ChurchSettings() {
               name="pastorName"
               value={formData.pastorName}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -406,7 +436,7 @@ function ChurchSettings() {
               name="foundedYear"
               value={formData.foundedYear}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -419,16 +449,16 @@ function ChurchSettings() {
               rows={3}
               value={formData.serviceTimes}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-md border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="e.g., Sundays at 10:00 AM, Wednesdays at 7:00 PM"
             />
           </div>
         </div>
 
-        <div className="flex justify-end pt-6 border-t border-gray-200">
+        <div className="flex justify-end pt-6 border-t border-slate-800">
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             Save Church Information
           </button>
@@ -445,7 +475,7 @@ function UsersSettings() {
 
   return (
     <div>
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+      <div className="flex items-center justify-between px-6 py-4 border border-slate-800">
         <div>
           <h2 className="text-lg font-medium text-gray-900">User Management</h2>
           <p className="mt-1 text-sm text-gray-600">
@@ -454,13 +484,13 @@ function UsersSettings() {
         </div>
         <button
           onClick={() => setShowAddUser(true)}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+          className="px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-800"
         >
           Add User
         </button>
       </div>
 
-      <div className="p-6">
+      <div className="p-6 border-b border-l border-r border-slate-800">
         {users && users.length > 0 ? (
           <div className="overflow-hidden rounded-lg shadow ring-1 ring-black ring-opacity-5">
             <table className="min-w-full divide-y divide-gray-300">
@@ -534,7 +564,7 @@ function UsersSettings() {
             </p>
             <button
               onClick={() => setShowAddUser(true)}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+              className="px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-800"
             >
               Add User
             </button>
@@ -577,28 +607,18 @@ function RolesSettings() {
       description: "Pastoral staff access",
       permissions: ["Members", "Events", "Sermons"],
     },
-    {
-      name: "Staff",
-      description: "Church staff access",
-      permissions: ["Members", "Events"],
-    },
-    {
-      name: "Member",
-      description: "Basic member access",
-      permissions: ["View Only"],
-    },
   ];
 
   return (
     <div>
-      <div className="px-6 py-4 border-b border-gray-200">
+      <div className="px-6 py-4 border border-slate-800">
         <h2 className="text-lg font-medium text-gray-900">Role Management</h2>
         <p className="mt-1 text-sm text-gray-600">
           Configure user roles and permissions
         </p>
       </div>
 
-      <div className="p-6">
+      <div className="p-6 border-b border-l border-r border-slate-800">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {roles.map((role) => (
             <div key={role.name} className="p-6 rounded-lg bg-gray-50">
@@ -651,19 +671,6 @@ function RolesSettings() {
             </div>
           ))}
         </div>
-
-        <div className="p-6 mt-8 rounded-lg bg-blue-50">
-          <h3 className="mb-2 text-lg font-medium text-blue-900">
-            Need custom roles?
-          </h3>
-          <p className="mb-4 text-blue-700">
-            Contact support to create custom roles with specific permissions for
-            your church's unique needs.
-          </p>
-          <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
-            Request Custom Role
-          </button>
-        </div>
       </div>
     </div>
   );
@@ -695,7 +702,7 @@ function NotificationsSettings() {
 
   return (
     <div>
-      <div className="px-6 py-4 border-b border-gray-200">
+      <div className="px-6 py-4 border border-slate-800">
         <h2 className="text-lg font-medium text-gray-900">
           Notification Settings
         </h2>
@@ -704,7 +711,10 @@ function NotificationsSettings() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-6">
+      <form
+        onSubmit={handleSubmit}
+        className="p-6 border-b border-l border-r border-slate-800"
+      >
         <div className="space-y-6">
           {/* Notification Channels */}
           <div>
@@ -724,10 +734,10 @@ function NotificationsSettings() {
                 <button
                   type="button"
                   onClick={() => handleToggle("emailNotifications")}
-                  className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                  className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2  focus:ring-offset-2 ${
                     notifications.emailNotifications
-                      ? "bg-blue-600"
-                      : "bg-gray-200"
+                      ? "bg-slate-800"
+                      : "bg-amber-300"
                   }`}
                 >
                   <span
@@ -754,8 +764,8 @@ function NotificationsSettings() {
                   onClick={() => handleToggle("smsNotifications")}
                   className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     notifications.smsNotifications
-                      ? "bg-blue-600"
-                      : "bg-gray-200"
+                      ? "bg-slate-800"
+                      : "bg-amber-300"
                   }`}
                 >
                   <span
@@ -813,8 +823,8 @@ function NotificationsSettings() {
                   <button
                     type="button"
                     onClick={() => handleToggle(key)}
-                    className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                      notifications[key] ? "bg-blue-600" : "bg-gray-200"
+                    className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-offset-2 ${
+                      notifications[key] ? "bg-slate-800" : "bg-amber-300"
                     }`}
                   >
                     <span
@@ -832,7 +842,7 @@ function NotificationsSettings() {
         <div className="flex justify-end pt-6 mt-6 border-t border-gray-200">
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-800 focus:outline-none focus:ring-offset-2"
           >
             Save Notification Preferences
           </button>
@@ -858,14 +868,17 @@ function SecuritySettings() {
 
   return (
     <div>
-      <div className="px-6 py-4 border-b border-gray-200">
+      <div className="px-6 py-4 border border-slate-800">
         <h2 className="text-lg font-medium text-gray-900">Security Settings</h2>
         <p className="mt-1 text-sm text-gray-600">
           Configure security preferences and access controls
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-6 space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="p-6 space-y-6 border-b border-l border-r border-slate-800"
+      >
         {/* Two-Factor Authentication */}
         <div className="flex items-center justify-between">
           <div>
@@ -885,7 +898,7 @@ function SecuritySettings() {
               }))
             }
             className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-              security.twoFactorAuth ? "bg-blue-600" : "bg-gray-200"
+              security.twoFactorAuth ? "bg-slate-800" : "bg-amber-300"
             }`}
           >
             <span
@@ -959,7 +972,7 @@ function SecuritySettings() {
               }))
             }
             className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-              security.loginAlerts ? "bg-blue-600" : "bg-gray-200"
+              security.loginAlerts ? "bg-slate-800" : "bg-amber-300"
             }`}
           >
             <span
@@ -1000,7 +1013,7 @@ function SecuritySettings() {
         <div className="flex justify-end pt-6 border-t border-gray-200">
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="px-4 py-2 text-sm font-medium rounded-md text-amber-300 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Save Security Settings
           </button>

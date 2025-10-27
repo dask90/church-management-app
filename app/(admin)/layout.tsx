@@ -50,11 +50,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <div
         className={`flex-1 transition-all duration-300 ease-in-out ${mainContentMargin}`}
       >
-        {/* Header */}
-        <Topbar />
+        {/* Topbar stays fixed on top of scrolling content */}
+        <div className="sticky top-0 z-50 bg-gray-100">
+          <Topbar />
+        </div>
 
-        {/* Page Content */}
-        <div className="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6 overflow-y-auto">
+        {/* Scrollable Page Content */}
+        <div className="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
           {children}
         </div>
       </div>

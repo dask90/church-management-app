@@ -19,12 +19,13 @@ export default function AttendancePage() {
 
   const [attendance, setAttendance] = useState<{ [key: string]: boolean }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Initialize attendance state
   useState(() => {
     const initialAttendance: { [key: string]: boolean } = {};
     members.forEach((member) => {
-      initialAttendance[member.id] = true; // Default to present
+      initialAttendance[member.id] = true;
     });
     setAttendance(initialAttendance);
   });
@@ -48,7 +49,6 @@ export default function AttendancePage() {
     setIsSubmitting(true);
 
     try {
-      // Create service record
       const service = createService({
         date: selectedService.date,
         type: selectedService.type as any,
@@ -59,7 +59,6 @@ export default function AttendancePage() {
           } - ${new Date(selectedService.date).toLocaleDateString()}`,
       });
 
-      // Create attendance records
       const records = Object.entries(attendance).map(([memberId, present]) => ({
         memberId,
         serviceDate: selectedService.date,
@@ -69,15 +68,6 @@ export default function AttendancePage() {
       }));
 
       markAttendance(records);
-
-      // Reset form
-      setSelectedService({
-        date: new Date().toISOString().split("T")[0],
-        type: "sunday",
-        title: "",
-        time: "09:00",
-      });
-
       alert("Attendance recorded successfully!");
     } catch (error) {
       console.error("Error recording attendance:", error);
@@ -90,6 +80,13 @@ export default function AttendancePage() {
   const presentCount = Object.values(attendance).filter(Boolean).length;
   const absentCount = members.length - presentCount;
 
+  // Filter members based on search query
+  const filteredMembers = members.filter((member) =>
+    `${member.firstName} ${member.lastName}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="p-6">
       <div className="flex items-center justify-between mb-6">
@@ -99,7 +96,16 @@ export default function AttendancePage() {
             Record attendance for church services
           </p>
         </div>
-        <div className="flex space-x-3">
+
+        {/* Search Bar + View Reports */}
+        <div className="flex items-center space-x-3">
+          <input
+            type="text"
+            placeholder="Search members..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <Link
             href="/attendance/reports"
             className="px-4 py-2 text-sm font-medium border rounded-md bg-slate-900 text-amber-300"
@@ -110,14 +116,14 @@ export default function AttendancePage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
-        {/* Service Information */}
+        {/* Service Info Section (unchanged) */}
         <div className="lg:col-span-1">
           <div className="p-6 bg-white border rounded-lg shadow border-slate-900">
             <h3 className="mb-4 text-lg font-bold text-gray-900">
               Service Information
             </h3>
-
             <form onSubmit={handleSubmit}>
+              {/* ...unchanged content... */}
               <div className="space-y-4">
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -133,7 +139,6 @@ export default function AttendancePage() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
-
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-700">
                     Service Type
@@ -153,7 +158,6 @@ export default function AttendancePage() {
                     ))}
                   </select>
                 </div>
-
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-700">
                     Service Time
@@ -168,7 +172,6 @@ export default function AttendancePage() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
-
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-700">
                     Service Title (Optional)
@@ -183,8 +186,6 @@ export default function AttendancePage() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
-
-                {/* Attendance Summary */}
                 <div className="p-4 rounded-md bg-gray-50">
                   <h4 className="mb-2 font-medium text-gray-900">
                     Attendance Summary
@@ -203,7 +204,6 @@ export default function AttendancePage() {
                     </div>
                   </div>
                 </div>
-
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -218,7 +218,7 @@ export default function AttendancePage() {
           </div>
         </div>
 
-        {/* Members List */}
+        {/* Members List (filtered) */}
         <div className="lg:col-span-3">
           <div className="bg-white border rounded-lg shadow border-slate-900">
             <div className="px-6 py-4 border-b border-gray-200">
@@ -227,7 +227,7 @@ export default function AttendancePage() {
               </h3>
             </div>
             <div className="p-6">
-              {members.length === 0 ? (
+              {filteredMembers.length === 0 ? (
                 <div className="py-8 text-center">
                   <p className="mb-4 text-gray-500">No members found</p>
                   <Link
@@ -239,7 +239,7 @@ export default function AttendancePage() {
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {members.map((member) => (
+                  {filteredMembers.map((member) => (
                     <div
                       key={member.id}
                       className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50"
@@ -259,7 +259,6 @@ export default function AttendancePage() {
                           </p>
                         </div>
                       </div>
-
                       <div className="flex items-center space-x-4">
                         <span
                           className={`text-sm font-medium ${
@@ -270,7 +269,6 @@ export default function AttendancePage() {
                         >
                           {attendance[member.id] ? "Present" : "Absent"}
                         </span>
-
                         <div className="flex space-x-2">
                           <button
                             onClick={() => toggleAttendance(member.id)}

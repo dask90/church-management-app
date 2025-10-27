@@ -12,7 +12,7 @@ interface User {
   id: string;
   email: string;
   name: string;
-  role: "admin" | "pastor" | "staff" | "member";
+  role: "admin" | "pastor";
   password: string; // This is not safe, but for mock purposes.
 }
 
@@ -53,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             email: "admin@church.com",
             name: "Church Admin",
             role: "admin",
-            password: "password", // In real app, this would be hashed
+            password: "password",
           },
         ];
         localStorage.setItem("church-users", JSON.stringify(demoUsers));

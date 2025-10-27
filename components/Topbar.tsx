@@ -102,7 +102,7 @@ export default function Topbar() {
             </Link>
           </div>
 
-          {/* Middle Section: Search (desktop only) */}
+          {/* Middle Section: Search (desktop only)
           <div className="relative hidden lg:block w-80">
             <input
               ref={inputRef}
@@ -113,7 +113,7 @@ export default function Topbar() {
             <span className="absolute text-gray-400 -translate-y-1/2 left-4 top-1/2">
               🔍
             </span>
-          </div>
+          </div> */}
 
           {/* Mobile Menu Toggle (3 dots) */}
           <button

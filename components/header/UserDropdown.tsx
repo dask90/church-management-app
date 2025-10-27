@@ -67,22 +67,22 @@ export default function UserDropdown() {
           </span>
         </div>
 
-        <ul className="flex flex-col gap-1 pt-4 pb-3 border-b border-gray-200 dark:border-gray-800">
+        {/* <ul className="flex flex-col gap-1 pt-4 pb-3 border-b border-gray-200 ">
           <li>
             <DropdownItem
               onItemClick={closeDropdown}
               tag="a"
               href="/profile"
-              className="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group hover:bg-slate-900 hover:text-amber-300"
+              className="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group hover:bg-slate-900 hover:text-amber-400"
             >
               Account settings
             </DropdownItem>
           </li>
-        </ul>
+        </ul> */}
 
         <button
           onClick={handleLogout}
-          className="w-full px-3 py-2 mt-2 font-medium text-red-600 transition bg-red-100 rounded-lg hover:bg-red-300"
+          className="w-full px-3 py-2 mt-2 font-medium text-white transition bg-red-600 rounded-lg hover:bg-red-400"
         >
           Sign out
         </button>

@@ -1,7 +1,7 @@
 {
   "name": "church-management-app",
   "version": "1.0.0",
-  "description": "Next.js TypeScript Church Management System",
+  "description": "Church Management System",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

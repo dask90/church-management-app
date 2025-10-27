@@ -75,27 +75,6 @@ export default function SignUpForm() {
     <div className="flex min-h-screen">
       <div className="flex items-center justify-center flex-1 px-4 py-12 bg-gray-50 dark:bg-gray-900 sm:px-6 lg:px-8">
         <div className="flex flex-col flex-1 w-full max-w-4xl lg:w-1/2">
-          <div className="w-full max-w-md mx-auto mb-5 sm:pt-10">
-            <Link
-              href="/"
-              className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-            >
-              <svg
-                className="w-4 h-4 mr-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Back to home
-            </Link>
-          </div>
           <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
             <div>
               <div className="mb-5 sm:mb-8">
@@ -180,8 +159,6 @@ export default function SignUpForm() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
                     >
-                      <option value="member">Member</option>
-                      <option value="staff">Staff</option>
                       <option value="pastor">Pastor</option>
                       <option value="admin">Admin</option>
                     </select>
@@ -259,26 +236,6 @@ export default function SignUpForm() {
                       placeholder="Confirm your password"
                       className="w-full px-4 py-3 text-sm placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                     />
-                  </div>
-
-                  {/* Terms and Conditions */}
-                  <div className="flex items-start gap-3">
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={(e) => setIsChecked(e.target.checked)}
-                      className="w-4 h-4 mt-1 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                      By creating an account means you agree to the{" "}
-                      <span className="text-gray-800 dark:text-white/90">
-                        Terms and Conditions,
-                      </span>{" "}
-                      and our{" "}
-                      <span className="text-gray-800 dark:text-white">
-                        Privacy Policy
-                      </span>
-                    </p>
                   </div>
 
                   {/* Submit Button */}

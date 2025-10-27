@@ -36,27 +36,6 @@ export default function SignInForm() {
       {/* Left Side - Form (50% width) */}
       <div className="flex items-center justify-center flex-1 px-4 py-12 bg-gray-50 dark:bg-gray-900 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
-          <div className="w-full mb-5 sm:pt-10">
-            <Link
-              href="/"
-              className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-            >
-              <svg
-                className="w-4 h-4 mr-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Back to home
-            </Link>
-          </div>
           <div className="flex flex-col justify-center flex-1 w-full">
             <div>
               <div className="mb-5 sm:mb-8">
@@ -181,7 +160,7 @@ export default function SignInForm() {
                 </div>
               </form>
 
-              <div className="mt-5">
+              {/* <div className="mt-5">
                 <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
                   Don&apos;t have an account? {""}
                   <Link
@@ -191,7 +170,7 @@ export default function SignInForm() {
                     Sign Up
                   </Link>
                 </p>
-              </div>
+              </div> */}
 
               {/* Demo credentials */}
               <div className="p-4 mt-4 border border-yellow-200 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 dark:border-yellow-800">
