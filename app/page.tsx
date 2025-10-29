@@ -400,27 +400,6 @@ export default function PublicChurchWebsite() {
             <p className="mb-8 text-gray-500">
               Have questions about our services or community?
             </p>
-            <a
-              href="#sermons"
-              className="inline-flex items-center transition-colors duration-300 text-amber-300 hover:text-amber-200 group"
-            >
-              <span className="transition-colors duration-300 border-b border-amber-300/30 group-hover:border-amber-200">
-                Explore Our Sermons
-              </span>
-              <svg
-                className="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </a>
           </div>
         </div>
       </section>
