@@ -37,6 +37,25 @@ export default function PublicChurchWebsite() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
+      {/* Admin/Pastor Link*/}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="fixed z-50 top-6 right-6"
+      >
+        <div className="px-6 py-3 rounded-full shadow-lg bg-amber-300/90 backdrop-blur-sm">
+          <p className="text-sm font-medium text-black">
+            Pastor or Admin?{" "}
+            <a
+              href="/login"
+              className="underline transition-all duration-300 hover:no-underline"
+            >
+              Access Portal
+            </a>
+          </p>
+        </div>
+      </motion.div>
       <section className="relative h-[100vh] flex items-center justify-center overflow-hidden text-white">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -55,14 +74,16 @@ export default function PublicChurchWebsite() {
         <div className="relative z-10 max-w-4xl px-6 mx-auto text-center">
           <motion.div
             initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: false }}
           ></motion.div>
 
           <motion.h1
             initial={{ y: 60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
+            viewport={{ once: false }}
             className="mb-4 font-serif text-5xl font-medium leading-tight md:text-6xl"
           >
             A Church Anchored in Faith, Hope and Love
@@ -70,8 +91,9 @@ export default function PublicChurchWebsite() {
 
           <motion.p
             initial={{ y: -60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
+            viewport={{ once: true }}
             className="mb-10 text-lg text-gray-200 md:text-xl"
           >
             Join us in worship as we grow together in the grace of Christ.
@@ -79,8 +101,9 @@ export default function PublicChurchWebsite() {
 
           <motion.div
             initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
+            viewport={{ once: true }}
             className="flex flex-col justify-center gap-6 sm:flex-row"
           >
             <a
@@ -102,7 +125,14 @@ export default function PublicChurchWebsite() {
       {/* Service Times - Style 1: Modern Cards */}
       <section className="py-24 text-white bg-black">
         <div className="container px-6 mx-auto">
-          <div className="mb-20 text-center">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }} // 👈 re-triggers every time it's in view
+            className="mb-20 text-center"
+          >
             <h2 className="mb-4 text-5xl font-light tracking-wide">
               Service Times
             </h2>
@@ -110,15 +140,22 @@ export default function PublicChurchWebsite() {
             <p className="max-w-2xl mx-auto text-xl text-gray-300">
               Join our community for spiritual growth and fellowship
             </p>
-          </div>
+          </motion.div>
 
+          {/* Timeline */}
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Extended Timeline line */}
+              {/* Timeline line */}
               <div className="absolute hidden w-1 h-[120%] transform -translate-x-1/2 -translate-y-[10%] left-1/2 bg-amber-300 md:block"></div>
 
-              {/* Service items with increased spacing */}
-              <div className="flex flex-col items-center mb-16 md:flex-row">
+              {/* Sunday Worship */}
+              <motion.div
+                initial={{ opacity: 0, x: -80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: false }}
+                className="flex flex-col items-center mb-16 md:flex-row"
+              >
                 <div className="mb-8 md:w-1/2 md:pr-12 md:mb-0 md:text-right">
                   <h3 className="mb-3 text-2xl font-medium">Sunday Worship</h3>
                   <p className="text-lg text-amber-300">8:00 AM & 10:30 AM</p>
@@ -129,15 +166,18 @@ export default function PublicChurchWebsite() {
                 <div className="z-10 flex items-center justify-center w-12 h-12 bg-black border-4 rounded-full border-amber-300">
                   <Church className="w-6 h-6 text-amber-300" />
                 </div>
-                <div className="mt-8 md:w-1/2 md:pl-12 md:mt-0">
-                  {/* Empty for alignment */}
-                </div>
-              </div>
+                <div className="mt-8 md:w-1/2 md:pl-12 md:mt-0"></div>
+              </motion.div>
 
-              <div className="flex flex-col items-center mb-16 md:flex-row">
-                <div className="mb-8 md:w-1/2 md:pr-12 md:mb-0 md:text-right">
-                  {/* Empty for alignment */}
-                </div>
+              {/* Bible Study */}
+              <motion.div
+                initial={{ opacity: 0, x: 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: false }}
+                className="flex flex-col items-center mb-16 md:flex-row"
+              >
+                <div className="mb-8 md:w-1/2 md:pr-12 md:mb-0 md:text-right"></div>
                 <div className="z-10 flex items-center justify-center w-12 h-12 bg-black border-4 rounded-full border-amber-300">
                   <Users className="w-6 h-6 text-amber-300" />
                 </div>
@@ -148,9 +188,16 @@ export default function PublicChurchWebsite() {
                     Deep dive into scripture with discussion
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col items-center md:flex-row">
+              {/* Youth Fellowship */}
+              <motion.div
+                initial={{ opacity: 0, x: -80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: false }}
+                className="flex flex-col items-center md:flex-row"
+              >
                 <div className="mb-8 md:w-1/2 md:pr-12 md:mb-0 md:text-right">
                   <h3 className="mb-3 text-2xl font-medium">
                     Youth Fellowship
@@ -163,10 +210,8 @@ export default function PublicChurchWebsite() {
                 <div className="z-10 flex items-center justify-center w-12 h-12 bg-black border-4 rounded-full border-amber-300">
                   <Music className="w-6 h-6 text-amber-300" />
                 </div>
-                <div className="mt-8 md:w-1/2 md:pl-12 md:mt-0">
-                  {/* Empty for alignment */}
-                </div>
-              </div>
+                <div className="mt-8 md:w-1/2 md:pl-12 md:mt-0"></div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -180,11 +225,23 @@ export default function PublicChurchWebsite() {
 
         <div className="container relative z-10 px-4 mx-auto">
           {/* Section Header */}
-          <div className="mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
+            className="mb-20 text-center"
+          >
             <div className="flex items-center justify-center mb-6">
-              <div className="flex items-center justify-center w-12 h-12 mr-4 rotate-45 rounded-lg bg-amber-300">
-                <Play className="w-6 h-6 text-black -rotate-45" />
-              </div>
+              <motion.div
+                initial={{ rotate: -90, opacity: 0 }}
+                whileInView={{ rotate: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center w-12 h-12 mr-4 rotate-45 rounded-lg bg-amber-300"
+              >
+                <Play className="w-6 h-6 text-black " />
+              </motion.div>
               <h2 className="text-5xl font-light text-white">
                 RECENT <span className="text-amber-300">SERMONS</span>
               </h2>
@@ -193,28 +250,48 @@ export default function PublicChurchWebsite() {
             <p className="text-xl font-light text-gray-300">
               Spiritual nourishment for your journey
             </p>
-          </div>
+          </motion.div>
 
           {/* Loading State */}
           {loadingSermons ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            >
               {[1, 2, 3].map((i) => (
-                <div
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: false }}
                   className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300 animate-pulse"
                 >
                   <div className="h-64 mb-4 bg-gray-800 rounded-lg"></div>
                   <div className="w-3/4 h-4 mx-auto mb-2 bg-gray-700 rounded"></div>
                   <div className="w-1/2 h-4 mx-auto bg-gray-700 rounded"></div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : recentSermons.length > 0 ? (
             // Sermons Grid
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {recentSermons.map((sermon) => (
-                <div
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            >
+              {recentSermons.map((sermon, index) => (
+                <motion.div
                   key={sermon.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: index * 0.15 }}
+                  viewport={{ once: false }}
                   className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300"
                 >
                   <div className="text-white">
@@ -223,15 +300,27 @@ export default function PublicChurchWebsite() {
                       onPlay={() => handlePlaySermon(sermon)}
                     />
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : (
             // Empty State
-            <div className="p-8 py-20 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300">
-              <div className="flex items-center justify-center w-24 h-24 mx-auto mb-6 transition-colors duration-300 rounded-full bg-amber-300/10 group-hover:bg-amber-300">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="p-8 py-20 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300"
+            >
+              <motion.div
+                initial={{ rotate: -90, opacity: 0 }}
+                whileInView={{ rotate: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center w-24 h-24 mx-auto mb-6 transition-colors duration-300 rounded-full bg-amber-300/10 group-hover:bg-amber-300"
+              >
                 <Play className="w-10 h-10 transition-colors duration-300 text-amber-300 group-hover:text-black" />
-              </div>
+              </motion.div>
               <h3 className="mb-3 text-2xl font-bold text-white">
                 No Sermons Available
               </h3>
@@ -239,7 +328,7 @@ export default function PublicChurchWebsite() {
                 We're preparing new spiritual messages. Please check back soon
                 for updates.
               </p>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
@@ -274,11 +363,23 @@ export default function PublicChurchWebsite() {
 
         <div className="container relative z-10 px-4 mx-auto">
           {/* Section Header */}
-          <div className="mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
+            className="mb-20 text-center"
+          >
             <div className="flex items-center justify-center mb-6">
-              <div className="flex items-center justify-center w-12 h-12 mr-4 rotate-45 rounded-lg bg-amber-300">
-                <Calendar className="w-6 h-6 text-black -rotate-45" />
-              </div>
+              <motion.div
+                initial={{ rotate: -90, opacity: 0 }}
+                whileInView={{ rotate: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center w-12 h-12 mr-4 rotate-45 rounded-lg bg-amber-300"
+              >
+                <Calendar className="w-6 h-6 text-black " />
+              </motion.div>
               <h2 className="text-5xl font-light text-white">
                 {upcomingEvents.length > 0 ? "UPCOMING" : "RECENT"}{" "}
                 <span className="text-amber-300">EVENTS</span>
@@ -288,29 +389,49 @@ export default function PublicChurchWebsite() {
             <p className="text-xl font-light text-gray-300">
               Stay connected with our church community
             </p>
-          </div>
+          </motion.div>
 
           {/* Loading State */}
           {loadingEvents ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            >
               {[1, 2, 3].map((i) => (
-                <div
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: false }}
                   className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300 animate-pulse"
                 >
                   <div className="h-48 mb-4 bg-gray-800 rounded-lg"></div>
                   <div className="w-3/4 h-6 mx-auto mb-2 bg-gray-700 rounded"></div>
                   <div className="w-1/2 h-4 mx-auto mb-2 bg-gray-700 rounded"></div>
                   <div className="w-2/3 h-4 mx-auto bg-gray-700 rounded"></div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : eventsToShow.length > 0 ? (
             // Events Grid
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {eventsToShow.map((event) => (
-                <div
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            >
+              {eventsToShow.map((event, index) => (
+                <motion.div
                   key={event.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: index * 0.15 }}
+                  viewport={{ once: false }}
                   className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300"
                 >
                   <div className="flex items-center justify-center mx-auto mb-6 transition-colors duration-300 rounded-full w-14 h-14 bg-amber-300/10 group-hover:bg-amber-300">
@@ -319,22 +440,34 @@ export default function PublicChurchWebsite() {
                   <div className="text-white">
                     <EventCard event={event} />
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : (
             // Empty State
-            <div className="p-8 py-20 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300">
-              <div className="flex items-center justify-center w-24 h-24 mx-auto mb-6 transition-colors duration-300 rounded-full bg-amber-300/10 group-hover:bg-amber-300">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="p-8 py-20 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300"
+            >
+              <motion.div
+                initial={{ rotate: -90, opacity: 0 }}
+                whileInView={{ rotate: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center w-24 h-24 mx-auto mb-6 transition-colors duration-300 rounded-full bg-amber-300/10 group-hover:bg-amber-300"
+              >
                 <Calendar className="w-10 h-10 transition-colors duration-300 text-amber-300 group-hover:text-black" />
-              </div>
+              </motion.div>
               <h3 className="mb-3 text-2xl font-bold text-white">
                 No Events Found
               </h3>
               <p className="max-w-md mx-auto text-gray-300">
                 Check back soon for upcoming events and gatherings.
               </p>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
@@ -346,11 +479,24 @@ export default function PublicChurchWebsite() {
         <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 rounded-full w-96 h-96 bg-amber-300/5 blur-3xl"></div>
 
         <div className="container relative z-10 px-4 mx-auto">
-          <div className="mb-20 text-center">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
+            className="mb-20 text-center"
+          >
             <div className="flex items-center justify-center mb-6">
-              <div className="flex items-center justify-center w-12 h-12 mr-4 rotate-45 rounded-lg bg-amber-300">
-                <MapPin className="w-6 h-6 text-black -rotate-45" />
-              </div>
+              <motion.div
+                initial={{ rotate: -90, opacity: 0 }}
+                whileInView={{ rotate: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center w-12 h-12 mr-4 rotate-45 rounded-lg bg-amber-300"
+              >
+                <MapPin className="w-6 h-6 text-black " />
+              </motion.div>
               <h2 className="text-5xl font-light text-white">
                 GET IN <span className="text-amber-300">TOUCH</span>
               </h2>
@@ -359,48 +505,100 @@ export default function PublicChurchWebsite() {
             <p className="text-xl font-light text-gray-300">
               We'd love to hear from you and welcome you to our community
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-3">
-            <div className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300">
-              <div className="flex items-center justify-center mx-auto mb-6 transition-colors duration-300 rounded-full w-14 h-14 bg-amber-300/10 group-hover:bg-amber-300">
+          {/* Contact Info Cards */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
+            className="grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-3"
+          >
+            {/* Location Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              viewport={{ once: false }}
+              className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center mx-auto mb-6 transition-colors duration-300 rounded-full w-14 h-14 bg-amber-300/10 group-hover:bg-amber-300"
+              >
                 <MapPin className="w-6 h-6 transition-colors duration-300 text-amber-300 group-hover:text-black" />
-              </div>
+              </motion.div>
               <h3 className="mb-4 text-lg font-bold text-white">
                 Our Location
               </h3>
               <p className="mb-2 text-gray-300">123 Church Street</p>
               <p className="text-gray-300">City, State 12345</p>
-            </div>
+            </motion.div>
 
-            <div className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300">
-              <div className="flex items-center justify-center mx-auto mb-6 transition-colors duration-300 rounded-full w-14 h-14 bg-amber-300/10 group-hover:bg-amber-300">
+            {/* Phone Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              viewport={{ once: false }}
+              className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center mx-auto mb-6 transition-colors duration-300 rounded-full w-14 h-14 bg-amber-300/10 group-hover:bg-amber-300"
+              >
                 <Phone className="w-6 h-6 transition-colors duration-300 text-amber-300 group-hover:text-black" />
-              </div>
+              </motion.div>
               <h3 className="mb-4 text-lg font-bold text-white">Phone</h3>
               <p className="text-lg font-medium text-gray-300">
-                (555) 123-4567
+                (233) 25 656 5609
               </p>
-              <p className="mt-1 text-sm text-gray-400">Mon-Fri 9AM-5PM</p>
-            </div>
+            </motion.div>
 
-            <div className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300">
-              <div className="flex items-center justify-center mx-auto mb-6 transition-colors duration-300 rounded-full w-14 h-14 bg-amber-300/10 group-hover:bg-amber-300">
+            {/* Email Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              viewport={{ once: false }}
+              className="p-8 text-center transition-all duration-500 border group bg-gray-900/50 backdrop-blur-sm border-amber-300/30 rounded-xl hover:border-amber-300"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center mx-auto mb-6 transition-colors duration-300 rounded-full w-14 h-14 bg-amber-300/10 group-hover:bg-amber-300"
+              >
                 <Mail className="w-6 h-6 transition-colors duration-300 text-amber-300 group-hover:text-black" />
-              </div>
+              </motion.div>
               <h3 className="mb-4 text-lg font-bold text-white">Email</h3>
               <p className="text-lg font-medium text-gray-300">
-                info@gracechurch.com
+                dasokwa90@gmail.com
               </p>
               <p className="mt-1 text-sm text-gray-400">24-hour response</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="max-w-2xl mx-auto mt-16 text-center">
+          {/* Footer Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: false }}
+            className="max-w-2xl mx-auto mt-16 text-center"
+          >
             <p className="mb-8 text-gray-500">
               Have questions about our services or community?
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
