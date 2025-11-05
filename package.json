@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/flatpickr": "^3.0.2",
     "@types/node": "^20.19.19",
     "@types/react": "^18.3.25",
     "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.4.21",
     "bcryptjs": "^2.4.3",
+    "flatpickr": "^4.6.13",
     "framer-motion": "^12.23.24",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.545.0",
@@ -21,6 +23,7 @@
     "postcss": "^8.5.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-dropzone": "^14.3.8",
     "react-icons": "^5.5.0",
     "recharts": "^3.2.1",
     "sqlite3": "^5.1.7",

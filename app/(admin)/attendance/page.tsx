@@ -50,7 +50,7 @@ export default function AttendancePage() {
 
     try {
       const service = createService({
-        date: selectedService.date,
+        date: new Date(selectedService.date),
         type: selectedService.type as any,
         title:
           selectedService.title ||
@@ -61,7 +61,7 @@ export default function AttendancePage() {
 
       const records = Object.entries(attendance).map(([memberId, present]) => ({
         memberId,
-        serviceDate: selectedService.date,
+        serviceDate: new Date(selectedService.date),
         serviceType: selectedService.type as any,
         present,
         serviceTime: selectedService.time,

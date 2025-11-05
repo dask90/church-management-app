@@ -12,7 +12,7 @@ export default function SignUpForm() {
     email: "",
     password: "",
     confirmPassword: "",
-    role: "member" as "admin" | "pastor" | "staff" | "member",
+    role: "admin" as "admin" | "pastor",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -180,8 +180,8 @@ export default function SignUpForm() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 text-sm text-white bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-amber-300 focus:border-amber-300"
                     >
-                      <option value="pastor">Pastor</option>
                       <option value="admin">Admin</option>
+                      <option value="pastor">Pastor</option>
                     </select>
                   </div>
 

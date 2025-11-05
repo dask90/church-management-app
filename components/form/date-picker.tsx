@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
-import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.css';
-import Label from './Label';
-import { CalenderIcon } from '../../icons';
-import Hook = flatpickr.Options.Hook;
-import DateOption = flatpickr.Options.DateOption;
+import { useEffect } from "react";
+import flatpickr from "flatpickr";
+import Label from "./Label";
+import { CalenderIcon } from "../../public/icons";
+import type { Options } from "flatpickr/dist/types/options";
+
+// Import the CSS in the root layout or a global CSS file instead
+// import 'flatpickr/dist/flatpickr.css';
 
 type PropsType = {
   id: string;
   mode?: "single" | "multiple" | "range" | "time";
-  onChange?: Hook | Hook[];
-  defaultDate?: DateOption;
+  onChange?: Options["onChange"];
+  defaultDate?: Options["defaultDate"];
   label?: string;
   placeholder?: string;
 };

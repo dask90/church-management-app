@@ -12,7 +12,7 @@ export default function AttendanceReports() {
     "week" | "month" | "year" | "all"
   >("month");
 
-  const stats = getAttendanceStats();
+  const stats = getAttendanceStats(members.length);
 
   // Calculate member attendance rates
   const memberAttendance = members

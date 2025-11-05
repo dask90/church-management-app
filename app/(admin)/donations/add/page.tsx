@@ -19,7 +19,7 @@ export default function AddDonation() {
     amount: "",
     type: "tithe" as const,
     date: new Date().toISOString().split("T")[0],
-    method: "cash" as const,
+    method: "cash" as "cash" | "check" | "online" | "card",
     checkNumber: "",
     description: "",
   });

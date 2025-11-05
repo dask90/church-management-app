@@ -26,6 +26,13 @@ export default function PublicChurchWebsite() {
   const { sermons, isLoading: loadingSermons } = useSermons();
   const { upcomingEvents, pastEvents, isLoading: loadingEvents } = useEvents();
 
+  const handlePlaySermon = (sermon: any) => {
+    // Handle sermon playback here
+    if (sermon.mediaUrl) {
+      window.open(sermon.mediaUrl, "_blank");
+    }
+  };
+
   const recentSermons = sermons.slice(0, 6);
   const eventsToShow =
     upcomingEvents.length > 0 ? upcomingEvents : pastEvents.slice(0, 6);
@@ -655,7 +662,12 @@ export default function PublicChurchWebsite() {
   );
 }
 
-function SermonCard({ sermon }: { sermon: any }) {
+interface SermonCardProps {
+  sermon: any;
+  onPlay?: () => void;
+}
+
+function SermonCard({ sermon, onPlay }: SermonCardProps) {
   const mediaType = MEDIA_TYPES.find((t) => t.value === sermon.mediaType);
 
   return (
@@ -663,9 +675,9 @@ function SermonCard({ sermon }: { sermon: any }) {
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
           <span className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-amber-100 text-slate-800">
-            {mediaType?.icon === "audio" && <Play className="w-3 h-3 mr-1" />}
-            {mediaType?.icon === "video" && <Play className="w-3 h-3 mr-1" />}
-            {mediaType?.icon === "text" && (
+            {mediaType?.value === "audio" && <Play className="w-3 h-3 mr-1" />}
+            {mediaType?.value === "video" && <Play className="w-3 h-3 mr-1" />}
+            {mediaType?.value === "text" && (
               <FileText className="w-3 h-3 mr-1" />
             )}
             {mediaType?.label}

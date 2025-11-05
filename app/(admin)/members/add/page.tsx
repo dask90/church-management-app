@@ -15,6 +15,7 @@ export default function AddMember() {
     branch: "Main Branch",
     address: "",
     birthDate: "",
+    joinDate: new Date().toISOString().split("T")[0],
     maritalStatus: "" as "single" | "married" | "divorced" | "widowed" | "",
     occupation: "",
     groups: [] as string[],
@@ -60,6 +61,7 @@ export default function AddMember() {
         email: formData.email,
         phone: formData.phone,
         branch: formData.branch,
+        joinDate: new Date(formData.joinDate),
         address: formData.address || undefined,
         birthDate: formData.birthDate
           ? new Date(formData.birthDate)
@@ -168,6 +170,20 @@ export default function AddMember() {
                 type="date"
                 name="birthDate"
                 value={formData.birthDate}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Join Date <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="date"
+                name="joinDate"
+                required
+                value={formData.joinDate}
                 onChange={handleChange}
                 className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />

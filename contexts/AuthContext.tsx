@@ -18,6 +18,7 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
+  users: User[];
   login: (email: string, password: string) => Promise<boolean>;
   signup: (
     email: string,
@@ -33,6 +34,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Initialize with some demo users
@@ -44,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(JSON.parse(storedUser));
       }
 
-      // Initialize with demo admin user if no users exist
+      // Load or initialize users
       const existingUsers = localStorage.getItem("church-users");
       if (!existingUsers) {
         const demoUsers: User[] = [
@@ -57,6 +59,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           },
         ];
         localStorage.setItem("church-users", JSON.stringify(demoUsers));
+        setUsers(demoUsers);
+      } else {
+        setUsers(JSON.parse(existingUsers));
       }
 
       setIsLoading(false);
@@ -141,7 +146,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout, isLoading }}>
+    <AuthContext.Provider
+      value={{ user, users, login, signup, logout, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );
