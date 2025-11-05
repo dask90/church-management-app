@@ -49,19 +49,21 @@ export default function AttendancePage() {
     setIsSubmitting(true);
 
     try {
+      const serviceDate = new Date(selectedService.date);
+
       const service = createService({
-        date: new Date(selectedService.date),
+        date: serviceDate,
         type: selectedService.type as any,
         title:
           selectedService.title ||
           `${
             SERVICE_TYPES.find((s) => s.value === selectedService.type)?.label
-          } - ${new Date(selectedService.date).toLocaleDateString()}`,
+          } - ${serviceDate.toLocaleDateString()}`,
       });
 
       const records = Object.entries(attendance).map(([memberId, present]) => ({
         memberId,
-        serviceDate: new Date(selectedService.date),
+        serviceDate: serviceDate,
         serviceType: selectedService.type as any,
         present,
         serviceTime: selectedService.time,

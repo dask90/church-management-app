@@ -43,8 +43,25 @@ export function AttendanceProvider({ children }: { children: ReactNode }) {
         const storedRecords = localStorage.getItem("church-attendance");
         const storedServices = localStorage.getItem("church-services");
 
-        if (storedRecords) setAttendanceRecords(JSON.parse(storedRecords));
-        if (storedServices) setServices(JSON.parse(storedServices));
+        if (storedRecords) {
+          const parsedRecords = JSON.parse(storedRecords);
+          // Convert date strings back to Date objects
+          const recordsWithDates = parsedRecords.map((record: any) => ({
+            ...record,
+            serviceDate: new Date(record.serviceDate),
+          }));
+          setAttendanceRecords(recordsWithDates);
+        }
+
+        if (storedServices) {
+          const parsedServices = JSON.parse(storedServices);
+          // Convert date strings back to Date objects
+          const servicesWithDates = parsedServices.map((service: any) => ({
+            ...service,
+            date: new Date(service.date),
+          }));
+          setServices(servicesWithDates);
+        }
       } catch (error) {
         console.error("Error loading attendance data:", error);
       } finally {
