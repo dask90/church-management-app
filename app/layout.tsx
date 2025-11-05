@@ -6,7 +6,7 @@ import { MembersProvider } from "../contexts/MembersContext";
 import { EventsProvider } from "../contexts/EventsContext";
 import { DonationsProvider } from "../contexts/DonationsContext";
 import { SermonsProvider } from "../contexts/SermonsContext";
-import { AttendanceProvider } from "../contexts/AttendanceContext"; // ✅ add this
+import { AttendanceProvider } from "../contexts/AttendanceContext";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -114,7 +114,7 @@ export default function PublicChurchWebsite() {
             </a>
             <button
               onClick={scrollToContact}
-              className="px-10 py-4 text-lg font-medium transition-all border-2 border-amber-300 hover:bg-amber-300 hover:text-slate-900"
+              className="px-10 py-4 text-lg font-medium transition-all border-2 border-white hover:bg-black hover:border-black hover:text-amber-300"
             >
               Plan Your Visit
             </button>

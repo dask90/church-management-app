@@ -199,7 +199,7 @@ export default function ForgotPassword() {
                 {step === "otp" && generatedOtp && (
                   <div className="p-3 mt-3 border rounded-lg border-amber-800 bg-amber-900/20">
                     <p className="text-sm text-center text-amber-300">
-                      <strong>Demo OTP:</strong> {generatedOtp}
+                      <strong>OTP:</strong> {generatedOtp}
                     </p>
                   </div>
                 )}
